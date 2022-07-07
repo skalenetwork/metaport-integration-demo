@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+.Mui-disabled{
+  color: #bdbdbd !important;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.bbLogo{
+  width: 60pt;
+}
+
+.skaleLogo{
+  height: 25pt;
+}
+
+.no-text-transform {
+  text-transform: none !important;
+}
