@@ -461,15 +461,17 @@ function App() {
             </div>
             
 
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-              Tokens transfered successfully!
-            </Alert>
-          </Snackbar>
+          
         </Stack>
         </Box>
       </Container>
       </div>
+
+      <Snackbar open={open} autoHideDuration={126000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Tokens transfered successfully!
+        </Alert>
+      </Snackbar>
       
     </div>
     </ThemeProvider>

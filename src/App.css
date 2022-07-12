@@ -61,8 +61,12 @@ h1, h2, h3, h4, h5, h6, p {
   text-transform: none !important;
 }
 
-.demoApp .MuiPaper-rounded{
+.demoApp .MuiBox-root .MuiPaper-rounded{
   padding: 5pt !important;
+}
+
+
+.demoApp .MuiPaper-rounded{
   border-radius: 20px !important;
 }
 
