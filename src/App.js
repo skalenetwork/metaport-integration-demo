@@ -2,6 +2,7 @@ import './App.css';
 import React, { useEffect } from 'react';
 
 import ModeSwitch from './Switch';
+import Header from './Header';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -40,19 +41,26 @@ import { IMAWidget } from '@skalenetwork/ima-widget';
 
 import { fromWei } from 'web3-utils';
 
-// import { SChain } from '@skalenetwork/ima-js';
-// import sChainAbi from './schianAbi.json';
 
-
-const themes = {
-  'dark': {
+export const themes = {
+  'blue': {
+    primary: '#00d4ff',
+    background: '#0a2540',
+    mode: 'dark'
+  },
+  'green': {
     primary: '#2dcb74',
     background: '#191919',
     mode: 'dark'
   },
-  'light': {
+  'orange': {
     primary: '#f96300',
     background: '#ffffff',
+    mode: 'light'
+  },
+  'violet': {
+    primary: '#9a66ff',
+    background: '#fbf8ff',
     mode: 'light'
   }
 }
@@ -95,7 +103,7 @@ const widget = new IMAWidget({
       }
     }
   },
-  theme: themes['dark']
+  theme: themes['green']
 });
 
 
@@ -116,12 +124,15 @@ function createMuiTheme(th) {
   })
 }
 
+
+const defaultColorScheme = 'green';
+
+
 function App() {
 
   const [open, setOpen] = React.useState(false);
-  const [darkMode, setDarkMode] = React.useState(true);
-  const [widgetTheme, setWidgetTheme] = React.useState(themes['dark']);
-  const [muiTheme, setMuiTheme] = React.useState(createMuiTheme(themes['dark']));
+  const [colorScheme, setColorScheme] = React.useState('green');
+  const [muiTheme, setMuiTheme] = React.useState(createMuiTheme(themes[colorScheme]));
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -167,11 +178,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    let themeName = darkMode ? 'dark' : 'light';
-    setWidgetTheme(themes[themeName]);
-    setMuiTheme(createMuiTheme(themes[themeName]));
-    widget.setTheme(themes[themeName]);
-  }, [darkMode]);
+    setMuiTheme(createMuiTheme(themes[colorScheme]));
+    widget.setTheme(themes[colorScheme]);
+  }, [colorScheme]);
 
   function widgetConnected() {
     setConnected(true);
@@ -244,20 +253,12 @@ function App() {
 
   return (
     <ThemeProvider theme={muiTheme}>
-    <div className={'demoApp ' + (widgetTheme.mode === 'dark' ? 'demoApp-dark' : 'demoApp-light')}>
-      <Stack spacing={2}>
-          <div></div>
-          <div className='flex-container'>
-            <div className='fl-grow'></div>
-            <div className='marg-ri-20'>
-              <ModeSwitch
-                darkMode={darkMode}
-                setDarkMode={setDarkMode}
-              />
-            </div>
-            
-          </div>
-      </Stack>
+    <div className={'AppWrap demoApp ' + (themes[colorScheme].mode === 'dark' ? 'demoApp-dark' : 'demoApp-light')}>
+      <Header
+        colorScheme={colorScheme}
+        setColorScheme={setColorScheme}
+      />
+      <div className='mainApp'>
       <Container maxWidth="sm" >
         <Box>
         <Stack spacing={3}>
@@ -468,6 +469,8 @@ function App() {
         </Stack>
         </Box>
       </Container>
+      </div>
+      
     </div>
     </ThemeProvider>
   );

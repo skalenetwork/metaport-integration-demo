@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6, p {
   text-transform: none !important;
 }
 
-.demoApp .MuiPaper-root{
+.demoApp .MuiPaper-rounded{
   padding: 5pt !important;
   border-radius: 20px !important;
 }
@@ -85,4 +85,66 @@ h4{
 
 .MuiCardContent-root:last-child{
   padding-bottom: 16px !important;
+}
+
+.logo{
+  width: 90pt;
+}
+
+.sk-header{
+  background-color: rgba(0, 0, 0, 0) !important;
+  -webkit-backdrop-filter: blur(80px) !important;
+  backdrop-filter: blur(80px) !important;
+}
+
+.appContent{
+  height: calc(100vh - 94px);
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.logo{
+  width: 90pt;
+}
+
+.demoApp-light .logo{
+  filter: invert(0.85);
+}
+
+.mainApp {
+  padding-top: 94px;
+}
+
+.ApdpWrap{
+  height: 100vh;
+}
+
+.MuiAppBar-positionFixed{
+  background-image: none !important;
+  padding: 10pt 0;
+}
+
+.sk-header .MuiFab-root{
+  box-shadow: none !important;
+}
+
+.fl-centered-vert{
+  align-items: center;
+}
+
+.try-icon .MuiSvgIcon-root{
+  width: 13pt;
+  height: 13pt;
+}
+
+.demoApp-light .try-icon .MuiSvgIcon-root{
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.try-text{
+  font-weight: 600 !important;
+  font-size: 10pt !important;
 }
