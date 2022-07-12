@@ -1,8 +1,14 @@
 import './App.css';
 import React, { useEffect } from 'react';
 
+import ModeSwitch from './Switch';
+
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import logoBB from './bb_logo.png'
-import logoSkale from './Skale_Logo_Black.png'
+// import logoSkale from './Skale_Logo_Black.png'
+import logoSkaleWhite from './skale_lg.svg'
+import logoRuby from './ruby_logo.png'
 
 import Chip from '@mui/material/Chip';
 
@@ -37,6 +43,21 @@ import { fromWei } from 'web3-utils';
 // import { SChain } from '@skalenetwork/ima-js';
 // import sChainAbi from './schianAbi.json';
 
+
+const themes = {
+  'dark': {
+    primary: '#2dcb74',
+    background: '#191919',
+    mode: 'dark'
+  },
+  'light': {
+    primary: '#f96300',
+    background: '#ffffff',
+    mode: 'light'
+  }
+}
+
+
 const widget = new IMAWidget({
   open: false,
   mainnetEndpoint: '',
@@ -59,8 +80,8 @@ const widget = new IMAWidget({
         //   "name": "SKALE",
         //   "address": "0xDeba4B3e3DCD346E93AC26d8b4e44d0B6D417617"
         // },
-        "usdt": {
-          "name": "Tether",
+        "usdc": {
+          "name": "USDC",
           "address": "0x296cc9cCCDB292bEf53dF56f732CeFE592222C0c"
         },
         // "dai": {
@@ -73,13 +94,34 @@ const widget = new IMAWidget({
         // }
       }
     }
-  }
+  },
+  theme: themes['dark']
 });
 
+
+function createMuiTheme(th) {
+  return createTheme({
+    palette: {
+    mode: th.mode,
+    background: {
+        paper: th.background
+    },
+    primary: {
+        main: th.primary,
+    },
+    secondary: {    
+        main: th.background
+    },
+    },
+  })
+}
 
 function App() {
 
   const [open, setOpen] = React.useState(false);
+  const [darkMode, setDarkMode] = React.useState(true);
+  const [widgetTheme, setWidgetTheme] = React.useState(themes['dark']);
+  const [muiTheme, setMuiTheme] = React.useState(createMuiTheme(themes['dark']));
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -124,13 +166,20 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    let themeName = darkMode ? 'dark' : 'light';
+    setWidgetTheme(themes[themeName]);
+    setMuiTheme(createMuiTheme(themes[themeName]));
+    widget.setTheme(themes[themeName]);
+  }, [darkMode]);
+
   function widgetConnected() {
     setConnected(true);
   }
 
   function requestBalances() {
-    widget.requestBalance('rapping-zuben-elakrab', 'usdt');
-    widget.requestBalance('deafening-maia', 'usdt');
+    widget.requestBalance('rapping-zuben-elakrab', 'usdc');
+    widget.requestBalance('deafening-maia', 'usdc');
   }
 
   const handleAmount = (event, newAmount) => {
@@ -190,17 +239,37 @@ function App() {
     if (!connected) {
       return 'Click \'Transfer\' to start'
     }
-    return balance ? 'Balance: ' + fromWei(balance) + ' USDT' : 'Loading balance...'
+    return balance ? 'Balance: ' + fromWei(balance) + ' USDC' : 'Loading balance...'
   }
 
   return (
-    <div className='demoApp'>
+    <ThemeProvider theme={muiTheme}>
+    <div className={'demoApp ' + (widgetTheme.mode === 'dark' ? 'demoApp-dark' : 'demoApp-light')}>
+      <Stack spacing={2}>
+          <div></div>
+          <div className='flex-container'>
+            <div className='fl-grow'></div>
+            <div className='marg-ri-20'>
+              <ModeSwitch
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+              />
+            </div>
+            
+          </div>
+      </Stack>
       <Container maxWidth="sm" >
         <Box>
-        <Stack spacing={2}>
+        <Stack spacing={3}>
             <div className='marg-top-20'>
-              <h1 className='no-mdarg-bott'>IMA Widget integration</h1>
+              <Typography weight="bold" sx={{ mb: 1.5 }} variant='h4' color="text.primary" className='no-marg-bott'>
+                IMA Widget integration
+              </Typography>
             </div>
+
+            <Typography sx={{ mb: 1.5 }} color="text.secondary" className='marg-bott-10'>
+              This demo demonstrates IMA Widget integration with custom widget theme and event-based interactions.
+            </Typography>
 
             <Card variant="outlined">
               <CardContent>
@@ -208,7 +277,7 @@ function App() {
 
                 <div className='flex-container fl-centered-vert marg-top-20 marg-bott-20'>
                   <div className='flex-container'>
-                    <img className='skaleLogo' src={logoSkale}/>
+                    <img className='skaleLogo' src={logoRuby}/>
                   </div>
                   <div className='flex-container marg-ri-20 marg-left-20'>
                     <ArrowForwardIcon/>
@@ -218,23 +287,14 @@ function App() {
                   </div>
                 </div>
 
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  Transfer USDT from Europa Hub to Block Brawlers
-                </Typography>
-
-                {/* <Button
-                  onClick={requestTransfer}
-                  variant="contained"
-                  startIcon={<ExploreIcon />}
-                  disabled={loading2 || loading || amount === null}
-                  className='marg-top-10'
-                >
-                  {loading ? '' : 'Connect to start'}
-                </Button> */}
-
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">  
-                  {getBalanceText(balance)}
-                </Typography>
+                <div className='padd-top-20 padd-bott-20'>
+                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    Transfer usdc from Europa Hub to Block Brawlers
+                  </Typography>
+                  <Typography sx={{ mb: 1.5 }} color="text.secondary">  
+                    {getBalanceText(balance)}
+                  </Typography>
+                </div>
 
                 <div className='marg-top-20 marg-bott-10'>
                   <ToggleButtonGroup
@@ -246,13 +306,13 @@ function App() {
                     disabled={loading2 || loading}
                   >
                     <ToggleButton value="100" aria-label="left aligned">
-                      100 USDT
+                      100 usdc
                     </ToggleButton>
                     <ToggleButton value="250" aria-label="centered">
-                      250 USDT
+                      250 usdc
                     </ToggleButton>
                     <ToggleButton value="500" aria-label="right aligned">
-                      500 USDT
+                      500 usdc
                     </ToggleButton>
                   </ToggleButtonGroup>
                 </div>
@@ -290,11 +350,11 @@ function App() {
                   <ArrowForwardIcon/>
                 </div>
                 <div className='flex-container'>
-                  <img className='skaleLogo' src={logoSkale}/>
+                  <img className='skaleLogo' src={logoRuby}/>
                 </div>
               </div>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                Transfer cloned USDT from Block Brawlers back to origin chain
+                Transfer cloned usdc from Block Brawlers back to origin chain
                 </Typography>
 
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -311,13 +371,13 @@ function App() {
                     disabled={loading2 || loading}
                   >
                     <ToggleButton value="50" aria-label="left aligned">
-                      50 USDT
+                      50 usdc
                     </ToggleButton>
                     <ToggleButton value="70" aria-label="centered">
-                      70 USDT
+                      70 usdc
                     </ToggleButton>
                     <ToggleButton value="300" aria-label="right aligned">
-                      300 USDT
+                      300 usdc
                     </ToggleButton>
                   </ToggleButtonGroup>
                 </div>
@@ -363,7 +423,9 @@ function App() {
             </div>
 
             <div className='marg-todp-20'>
-              <h1 className='no-mdarg-bott'>Sandbox</h1>
+              <Typography weight="bold" sx={{ mb: 1.5 }} variant='h4' color="text.primary" className='no-marg-bott'>
+                Sandbox
+              </Typography>
             </div>
 
             <div className='marg-bott-20'>
@@ -407,6 +469,7 @@ function App() {
         </Box>
       </Container>
     </div>
+    </ThemeProvider>
   );
 }
 

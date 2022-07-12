@@ -37,9 +37,10 @@
   }
 }
 
-.Mui-disabled{
-  color: #bdbdbd !important;
-}
+  .MuiToggleButtonGroup-root .Mui-disabled{
+    color: #bdbdbd !important;
+  }  
+
 
 
 h1, h2, h3, h4, h5, h6, p {
@@ -53,9 +54,35 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .skaleLogo{
-  height: 25pt;
+  height: 30pt;
 }
 
 .no-text-transform {
   text-transform: none !important;
+}
+
+.demoApp .MuiPaper-root{
+  padding: 5pt !important;
+  border-radius: 20px !important;
+}
+
+h4{
+  font-weight: 600 !important;
+}
+
+.demoApp-light{
+  background-color: #f2f2f2;
+}
+
+
+.demoApp-dark{
+  background-color: #000000;
+}
+
+.demoApp-dark .MuiFormControlLabel-label{
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.MuiCardContent-root:last-child{
+  padding-bottom: 16px !important;
 }
