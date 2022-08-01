@@ -57,6 +57,10 @@ h1, h2, h3, h4, h5, h6, p {
   height: 30pt;
 }
 
+.ethLogo{
+  height: 40pt;
+}
+
 .no-text-transform {
   text-transform: none !important;
 }
@@ -151,4 +155,8 @@ h4{
 .try-text{
   font-weight: 600 !important;
   font-size: 10pt !important;
+}
+
+.MuiTabPanel-root{
+  padding: 24px 0 !important;
 }

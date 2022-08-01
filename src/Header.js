@@ -88,6 +88,15 @@ export default class Header extends React.Component {
                 <DarkModeIcon />
               </Fab>
             </div>
+            <div className="flex-container margf-ri-20">
+              <Fab
+                size="small"
+                style={{backgroundColor: themes.pink.primary}}
+                onClick={() => {this.props.setColorScheme('pink')}}
+              >
+                <LightModeIcon style={{color: 'white'}} />
+              </Fab>
+            </div>
         </Toolbar>
     </AppBar>
     )

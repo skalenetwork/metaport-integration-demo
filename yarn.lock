@@ -2038,10 +2038,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@skalenetwork/ima-js@1.0.3-develop.0":
-  version "1.0.3-develop.0"
-  resolved "https://registry.yarnpkg.com/@skalenetwork/ima-js/-/ima-js-1.0.3-develop.0.tgz#16c8513994c8688aabd76a36f961e8a592db0e97"
-  integrity sha512-fNuhzSCBfv+Pd9n/sGlKkkshbQ9o8oaZmAVhdXV7mvejPj7lrfYsz1LBji9HDUR06bLBxtTRPPjsHuka+usQyg==
+"@skalenetwork/ima-js@1.0.4-develop.1":
+  version "1.0.4-develop.1"
+  resolved "https://registry.yarnpkg.com/@skalenetwork/ima-js/-/ima-js-1.0.4-develop.1.tgz#183622bc2ac99d21ba83a7162e759fea5c689e5e"
+  integrity sha512-7/fu3EoObvkwuKXrvubmK1h4bJtsSJc6k3G82aiRiW5B5CvZfaD5xaNHHoj/YNA1/kyTXlVeWwtv/X0gxXlqhw==
   dependencies:
     tslog "^3.2.0"
     web3 "1.4.0"
@@ -2054,7 +2054,7 @@
     "@fontsource/roboto" "^4.5.7"
     "@mui/icons-material" "^5.8.0"
     "@mui/material" "^5.8.1"
-    "@skalenetwork/ima-js" "1.0.3-develop.0"
+    "@skalenetwork/ima-js" "1.0.4-develop.1"
     "@types/react" "^18.0.0"
     "@types/react-dom" "^18.0.0"
     react "^18.1.0"
