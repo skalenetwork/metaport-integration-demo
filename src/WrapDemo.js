@@ -22,8 +22,6 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import MoveUpIcon from '@mui/icons-material/MoveUp';
 import MoveDownIcon from '@mui/icons-material/MoveDown';
 
-import { fromWei } from 'web3-utils';
-
 
 const ETH_TOKEN = {
   'rapping-zuben-elakrab': {
@@ -192,7 +190,7 @@ export default function WrapDemo(props) {
     if (!connected) {
       return 'Click \'Transfer\' to start'
     }
-    return balance ? 'Balance: ' + fromWei(balance) + ' ETH' : 'Loading balance...'
+    return balance ? 'Balance: ' + balance + ' ETH' : 'Loading balance...'
   }
 
     return (<div>

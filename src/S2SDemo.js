@@ -25,8 +25,6 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-import { fromWei } from 'web3-utils';
-
 
 const TOKENS = {
   'rapping-zuben-elakrab': {
@@ -149,7 +147,7 @@ export default function S2SDemo(props) {
     if (!connected) {
       return 'Click \'Transfer\' to start'
     }
-    return balance ? 'Balance: ' + fromWei(balance) + ' USDC' : 'Loading balance...'
+    return balance ? 'Balance: ' + balance + ' USDC' : 'Loading balance...'
   }
 
     return (<div>

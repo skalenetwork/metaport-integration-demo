@@ -23,8 +23,10 @@ import TabPanel from '@mui/lab/TabPanel';
 
 import LinkIcon from '@mui/icons-material/Link';
 
-import { IMAWidget } from '@skalenetwork/ima-widget';
+import { Metaport } from '@skalenetwork/metaport';
 
+
+export const MAINNET_ENDPOINT = process.env["REACT_APP_MAINNET_ENDPOINT"];
 
 
 export const themes = {
@@ -56,9 +58,9 @@ export const themes = {
 }
 
 
-const widget = new IMAWidget({
+const widget = new Metaport({
   open: false,
-  mainnetEndpoint: 'https://rinkeby.infura.io/v3/fceb4b9a4eee40adb65ede10666e0915',
+  mainnetEndpoint: MAINNET_ENDPOINT,
   network: 'staging',
   schains: [
     // 'rapping-zuben-elakrab',
