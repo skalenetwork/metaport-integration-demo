@@ -160,3 +160,102 @@ h4{
 .MuiTabPanel-root{
   padding: 24px 0 !important;
 }
+
+
+
+.mp__flex {
+  display: flex;
+  vertical-align: middle;
+}
+
+.fl-right {
+  justify-content: end;
+}
+
+.mp__flexCentered {
+  align-items: center;
+  justify-content: center;
+}
+
+.mp__flexCenteredVert {
+  align-items: center;
+}
+
+.mp__flexGrow {
+  flex-grow: 1;
+}
+
+.mp__margTop10 {
+  margin-top: 10px !important;
+}
+
+.marg-left-10 {
+  margin-left: 10px !important;
+}
+
+.marg-left-20 {
+  margin-left: 20px !important;
+}
+
+.marg-ri-20 {
+  margin-right: 20px !important;
+}
+
+.mp__margRi10 {
+  margin-right: 10px !important;
+}
+
+.mp__margRi5 {
+  margin-right: 5px !important;
+}
+
+
+.mp__margTop20 {
+  margin-top: 20px !important;
+}
+
+.mp__margTop20Pt {
+  margin-top: 20pt !important;
+}
+
+.marg-top-30 {
+  margin-top: 30px !important;
+}
+
+.marg-bott-20 {
+  margin-bottom: 20px !important;
+}
+
+.mp__margBott10 {
+  margin-bottom: 10px !important;
+}
+
+.marg-bott-40 {
+  margin-bottom: 40px !important;
+}
+
+.mp__margBott5 {
+  margin-bottom: 5px !important;
+}
+
+.mp__margTop5 {
+  margin-top: 5px !important;
+}
+
+
+.mp__noMargTop {
+  margin-top: 0 !important;
+}
+
+
+.mp__noMarg-bott {
+  margin-bottom: 0 !important;
+}
+
+.mp__noMarg {
+  margin: 0 !important;
+}
+
+.hidden{
+  display: none !important;
+}

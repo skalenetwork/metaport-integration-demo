@@ -1789,10 +1789,8 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@skalenetwork/metaport@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@skalenetwork/metaport/-/metaport-0.0.5.tgz#278b678ed103236d3293dc992a04286be0409574"
-  integrity sha512-tk1ptohCcdeI/C2KPu84TYavNiZaAelNWbhJbjQcM6K9xXSmZslNivqTvGsYV1z33MJfQC0SEDRtIZsZHEf/wA==
+"@skalenetwork/metaport@file:../ima-widget":
+  version "0.0.8"
 
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
   version "2.2.3"

@@ -43,13 +43,13 @@ export default function Sandbox(props) {
 
   return (<div>
       <Stack spacing={3}>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary" className='marg-bott-10'>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10'>
             Here you can freely explore Metaport functionality - set transfer amount, change networks, etc.
         </Typography>
         <Card variant="outlined" sx={{ minWidth: 275 }} className='marg-bott-20'>
           <CardContent>
             <Chip label="Custom transfers" />
-            <Typography sx={{ mb: 1.5 }} color="text.secondary" className='marg-top-20'>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margTop20'>
               Open Metaport popup to perform custom transfers. <br/>
               You will be able to select tokens and chains.
             </Typography>
@@ -57,7 +57,7 @@ export default function Sandbox(props) {
               onClick={openSandbox}
               variant="contained"
               startIcon={<OpenInNewIcon />}
-              className='marg-top-10'
+              className='mp__margTop10'
             >
               Open Metaport
             </Button>
@@ -65,7 +65,7 @@ export default function Sandbox(props) {
               onClick={props.widget.close}
               variant="contained"
               startIcon={<CancelIcon />}
-              className='marg-top-10 marg-left-10'
+              className='mp__margTop10 marg-left-10'
             >
               Close Metaport
             </Button>

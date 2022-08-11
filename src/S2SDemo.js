@@ -152,7 +152,7 @@ export default function S2SDemo(props) {
 
     return (<div>
         <Stack spacing={3}>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary" className='marg-bott-10'>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10'>
                 This demo demonstrates Metaport integration with custom widget theme and event-based interactions.
             </Typography>
 
@@ -160,15 +160,15 @@ export default function S2SDemo(props) {
               <CardContent>
                 <Chip label="Step 1: Transfer from origin chain" />
 
-                <Stack className="marg-top-10 marg-bott-10" spacing={1}>
-                    <div className='flex-container fl-centered-vert marg-top-20 marg-bott-20'>
-                    <div className='flex-container'>
+                <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+                    <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+                    <div className='mp__flex'>
                         <img className='skaleLogo' src={logoRuby}/>
                     </div>
-                    <div className='flex-container marg-ri-20 marg-left-20'>
+                    <div className='mp__flex marg-ri-20 marg-left-20'>
                         <ArrowForwardIcon/>
                     </div>
-                    <div className='flex-container'>
+                    <div className='mp__flex'>
                         <img className='bbLogo' src={logoBB}/>
                     </div>
                     </div>
@@ -184,7 +184,7 @@ export default function S2SDemo(props) {
                   </Typography>
                 </div>
 
-                <div className='marg-top-20 marg-bott-10'>
+                <div className='mp__margTop20 mp__margBott10'>
                   <ToggleButtonGroup
                     value={amount}
                     exclusive
@@ -209,7 +209,7 @@ export default function S2SDemo(props) {
                   variant="contained"
                   startIcon={<SwipeRightIcon />}
                   disabled={loading2 || loading || amount === null}
-                  className='marg-top-10'
+                  className='mp__margTop10'
                 >
                   {loading ? 'Complete transfer in widget' : 'Transfer'}
                 </Button>
@@ -217,7 +217,7 @@ export default function S2SDemo(props) {
                 <Button 
                   onClick={cancelTransferRequest}
                   variant="contained"
-                  className={'marg-top-10 marg-left-10 ' + (loading ? '' : 'hidden')}
+                  className={'mp__margTop10 marg-left-10 ' + (loading ? '' : 'hidden')}
                   startIcon={<CancelIcon />}
                 >
                   Cancel
@@ -230,15 +230,15 @@ export default function S2SDemo(props) {
               <CardContent>
               <Chip label="Step 2: Transfer clones back" />
 
-              <Stack className="marg-top-10 marg-bott-10" spacing={1}>
-                <div className='flex-container fl-centered-vert marg-top-20 marg-bott-20'>
-                    <div className='flex-container'>
+              <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+                <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+                    <div className='mp__flex'>
                     <img className='bbLogo' src={logoBB}/>
                     </div>
-                    <div className='flex-container marg-ri-20 marg-left-20'>
+                    <div className='mp__flex marg-ri-20 marg-left-20'>
                     <ArrowForwardIcon/>
                     </div>
-                    <div className='flex-container'>
+                    <div className='mp__flex'>
                     <img className='skaleLogo' src={logoRuby}/>
                     </div>
                 </div>
@@ -252,7 +252,7 @@ export default function S2SDemo(props) {
                   {getBalanceText(balance2)}
                 </Typography>
 
-                <div className='marg-top-20 marg-bott-10'>
+                <div className='mp__margTop20 mp__margBott10'>
                   <ToggleButtonGroup
                     value={amount2}
                     exclusive
@@ -278,7 +278,7 @@ export default function S2SDemo(props) {
                   variant="contained"
                   startIcon={<SwipeLeftIcon />}
                   disabled={loading2 || loading || amount2 === null}
-                  className='marg-top-10'
+                  className='mp__margTop10'
                 >
                   {loading2 ? 'Complete transfer in widget' : 'Transfer'}
                 </Button>
@@ -286,7 +286,7 @@ export default function S2SDemo(props) {
                 <Button 
                   onClick={cancelTransferRequest2}
                   variant="contained"
-                  className={'marg-top-10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
+                  className={'mp__margTop10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
                   startIcon={<CancelIcon />}
                 >
                   Cancel

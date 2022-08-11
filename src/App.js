@@ -59,19 +59,22 @@ export const themes = {
 
 
 const widget = new Metaport({
-  open: false,
+  // open: false,
   mainnetEndpoint: MAINNET_ENDPOINT,
   network: 'staging',
-  schains: [
+  chains: [
     // 'rapping-zuben-elakrab',
-    // 'deafening-maia',
-    // 'fancy-rasalhague'
+    // 'deafening-maia'
   ],
-  schainAliases: {
-    'rapping-zuben-elakrab': 'Europa SKALE Chain',
-    // 'rapping-zuben-elakrab': 'Ruby Exchange',
-    'deafening-maia': 'Block Brawlers',
-    // 'fancy-rasalhague': 'NFT Hub'
+  chainsMetadata: {
+    'rapping-zuben-elakrab': {
+      alias: 'Europa SKALE Chain', // optional
+      minSfuelWei: '27000000000000', // optional
+      faucetUrl: 'https://github.com/skalenetwork/skale-network' // optional
+    },
+    'deafening-maia': {
+      alias: 'Block Brawlers'
+    }
   },
   tokens: {
     "rapping-zuben-elakrab": {
@@ -211,7 +214,7 @@ function App() {
       <Container maxWidth="sm" >
         <Box>
         <Stack spacing={3}>
-            <div className='marg-top-20'>
+            <div className='mp__margTop20'>
               <Typography weight="bold" sx={{ mb: 1.5 }} variant='h4' color="text.primary" className='no-marg-bott'>
                 Metaport integration
               </Typography>
@@ -250,7 +253,7 @@ function App() {
             </Box>
 
             <div className='marg-bott-20'>
-              <Link className='marg-top-20' target="_blank" href="https://rapping-zuben-elakrab.explorer.staging-v2.skalenodes.com/" underline="none">
+              <Link className='mp__margTop20' target="_blank" href="https://rapping-zuben-elakrab.explorer.staging-v2.skalenodes.com/" underline="none">
                 <Button size='small' variant="outlined" startIcon={<LinkIcon />} className='no-text-transform'>
                   Go to Europa Hub block explorer (rapping-zuben-elakrab)
                 </Button>
@@ -258,7 +261,7 @@ function App() {
           
            
               <Link  target="_blank" href="https://deafening-maia.explorer.staging-v2.skalenodes.com/" underline="none" >
-                <Button size='small' variant="outlined" startIcon={<LinkIcon />} className='no-text-transform marg-top-10 marg-bott-20'>
+                <Button size='small' variant="outlined" startIcon={<LinkIcon />} className='no-text-transform mp__margTop10 marg-bott-20'>
                   Go to Block Brawlers block explorer (deafening-maia)
                 </Button>
               </Link>

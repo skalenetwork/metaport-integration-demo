@@ -40,19 +40,19 @@ export default class Header extends React.Component {
   render() {
     return (
       <AppBar elevation={0} position="fixed" className="sk-header">
-        <Toolbar className='flex-container'>
-            <div className="flex-container fl-centered-vert fl-grow">
+        <Toolbar className='mp__flex'>
+            <div className="mp__flex fl-centered-vert mp__flexGrow">
               <img src={logo} className="logo" alt="logo" />
             </div>
-            <div className="flex-container marg-ri-10 fl-center-vert">
+            <div className="mp__flex mp__margRi10 fl-center-vert">
               <Typography weight="bold" variant='p' color="text.primary" className='no-marg try-text'>
                 Try different themes
               </Typography>
             </div>
-            <div className="flex-container marg-ri-20 try-icon">
+            <div className="mp__flex marg-ri-20 try-icon">
               <ArrowForwardIcon/>
             </div>
-            <div className="flex-container marg-ri-20 marg-left-10">
+            <div className="mp__flex marg-ri-20 marg-left-10">
               <Fab
                 size="small"
                 style={{backgroundColor: themes.violet.primary}}
@@ -61,7 +61,7 @@ export default class Header extends React.Component {
                 <LightModeIcon style={{color: 'white'}} />
               </Fab>
             </div>
-            <div className="flex-container marg-ri-20">
+            <div className="mp__flex marg-ri-20">
               <Fab
                 size="small"
                 style={{backgroundColor: themes.blue.primary}}
@@ -70,7 +70,7 @@ export default class Header extends React.Component {
                 <DarkModeIcon />
               </Fab>
             </div>
-            <div className="flex-container marg-ri-20">
+            <div className="mp__flex marg-ri-20">
               <Fab
                 size="small"
                 style={{backgroundColor: themes.orange.primary}}
@@ -79,7 +79,7 @@ export default class Header extends React.Component {
                 <LightModeIcon style={{color: 'white'}} />
               </Fab>
             </div>
-            <div className="flex-container marg-ri-20">
+            <div className="mp__flex marg-ri-20">
               <Fab
                 size="small"
                 style={{backgroundColor: themes.green.primary}}
@@ -88,7 +88,7 @@ export default class Header extends React.Component {
                 <DarkModeIcon />
               </Fab>
             </div>
-            <div className="flex-container margf-ri-20">
+            <div className="mp__flex margf-ri-20">
               <Fab
                 size="small"
                 style={{backgroundColor: themes.pink.primary}}
