@@ -107,11 +107,15 @@ export default function S2SDemo(props) {
   }
 
   function transferComplete(e) {
-    setLoading(false);
-    setLoading2(false);
-    props.widget.reset();
-    props.widget.close();
-    props.setOpen(true);
+    
+    if(!e.detail.unwrap) {
+      setLoading(false);
+      setLoading2(false);
+      props.widget.reset();
+      props.widget.close();
+      props.setOpen(true);
+    }
+    
   }
 
   function updateTokenBalance(e) {

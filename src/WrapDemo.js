@@ -118,12 +118,21 @@ export default function WrapDemo(props) {
   }
 
   function transferComplete(e) {
-    setLoading(false);
-    setLoading2(false);
-    setLoading3(false);
-    props.widget.reset();
-    props.widget.close();
-    props.setOpen(true);
+    console.log("e.details");
+    console.log(e);
+    console.log(e.detail);
+    console.log(e.detail.unwrap);
+    console.log(!e.detail.unwrap);
+    console.log('-================================================================');
+
+    if(!e.detail.unwrap) {
+      setLoading(false);
+      setLoading2(false);
+      setLoading3(false);
+      props.widget.reset();
+      props.widget.close();
+      props.setOpen(true);
+    }
   }
 
   function updateTokenBalance(e) {
