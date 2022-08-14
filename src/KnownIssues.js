@@ -25,7 +25,7 @@ export default function KnownIssues() {
                         <BugReportIcon />
                     </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary="Skipped steps" secondary="Sometimes steps may be automatically skipped incorretly. Reload the page to fix it." />
+                <ListItemText primary="Skipped steps" secondary="Sometimes steps may be automatically skipped incorrectly. Reload the page to fix it." />
             </ListItem>
             <ListItem>
                 <ListItemAvatar>
