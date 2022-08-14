@@ -230,7 +230,7 @@ h4{
   margin-bottom: 10px !important;
 }
 
-.marg-bott-40 {
+.mp__margBott40 {
   margin-bottom: 40px !important;
 }
 
@@ -258,4 +258,9 @@ h4{
 
 .hidden{
   display: none !important;
+}
+
+
+.demoApp-dark .MuiListItemText-primary{
+  color: #fff !important;
 }

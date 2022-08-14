@@ -37,8 +37,14 @@ const SCHAINS = ['mainnet', 'rapping-zuben-elakrab', 'deafening-maia'];
 export default function Sandbox(props) {
   
   function openSandbox() {
-    props.widget.updateParams({schains: SCHAINS, tokens: TOKENS});
+    props.widget.reset();
+    props.widget.updateParams({chains: SCHAINS, tokens: TOKENS});
     props.widget.open();
+  }
+
+  function closeMetaport() {
+    props.widget.close();
+    props.widget.reset();
   }
 
   return (<div>
@@ -62,7 +68,7 @@ export default function Sandbox(props) {
               Open Metaport
             </Button>
             <Button 
-              onClick={props.widget.close}
+              onClick={closeMetaport}
               variant="contained"
               startIcon={<CancelIcon />}
               className='mp__margTop10 marg-left-10'

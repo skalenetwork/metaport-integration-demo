@@ -6,6 +6,7 @@ import Header from './Header';
 import S2SDemo from './S2SDemo';
 import Sandbox from './Sandbox';
 import WrapDemo from './WrapDemo';
+import KnownIssues from './KnownIssues';
 
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
@@ -20,6 +21,8 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+
+import MoveUpIcon from '@mui/icons-material/MoveUp';
 
 import LinkIcon from '@mui/icons-material/Link';
 
@@ -223,7 +226,7 @@ function App() {
               <TabContext value={value}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                   <TabList onChange={handleChange} aria-label="lab API tabs example">
-                    <Tab label="S2S Demo" value="1" />
+                    <Tab label='S2S Demo' value="1" />
                     <Tab label="Wrap Demo" value="2" />
                     <Tab label="Sandbox" value="3" />
                   </TabList>
@@ -252,7 +255,7 @@ function App() {
               </TabContext>
             </Box>
 
-            <div className='marg-bott-20'>
+            <div>
               <Link className='mp__margTop20' target="_blank" href="https://rapping-zuben-elakrab.explorer.staging-v2.skalenodes.com/" underline="none">
                 <Button size='small' variant="outlined" startIcon={<LinkIcon />} className='no-text-transform'>
                   Go to Europa Hub block explorer (rapping-zuben-elakrab)
@@ -266,6 +269,14 @@ function App() {
                 </Button>
               </Link>
             </div>
+
+            <Typography weight="bold" sx={{ mb: 1.5 }} variant='h5' color="text.primary" style={{"fontWeight": "600"}}>
+              Known issues
+            </Typography>
+
+            <KnownIssues/>
+
+
         </Stack>
         </Box>
       </Container>

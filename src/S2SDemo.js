@@ -107,7 +107,6 @@ export default function S2SDemo(props) {
   }
 
   function transferComplete(e) {
-    
     if(!e.detail.unwrap) {
       setLoading(false);
       setLoading2(false);
@@ -115,7 +114,6 @@ export default function S2SDemo(props) {
       props.widget.close();
       props.setOpen(true);
     }
-    
   }
 
   function updateTokenBalance(e) {

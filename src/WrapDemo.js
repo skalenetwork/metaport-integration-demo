@@ -64,6 +64,12 @@ export default function WrapDemo(props) {
     );
 
     window.addEventListener(
+      "metaport_unwrapComplete",
+      transferComplete,
+      false
+    );
+
+    window.addEventListener(
       "metaport_connected",
       widgetConnected,
       false
@@ -118,13 +124,6 @@ export default function WrapDemo(props) {
   }
 
   function transferComplete(e) {
-    console.log("e.details");
-    console.log(e);
-    console.log(e.detail);
-    console.log(e.detail.unwrap);
-    console.log(!e.detail.unwrap);
-    console.log('-================================================================');
-
     if(!e.detail.unwrap) {
       setLoading(false);
       setLoading2(false);
@@ -242,7 +241,7 @@ export default function WrapDemo(props) {
                     color="primary"
                     onChange={handleAmount}
                     aria-label="text alignment"
-                    disabled={loading2 || loading}
+                    disabled={loading3 || loading2 || loading}
                   >
                     <ToggleButton value="0.01" aria-label="left aligned">
                       0.01 ETH
@@ -259,7 +258,7 @@ export default function WrapDemo(props) {
                   onClick={requestTransfer}
                   variant="contained"
                   startIcon={<SwipeRightIcon />}
-                  disabled={loading2 || loading || amount === null || loading3}
+                  disabled={loading3 || loading2 || loading || amount === null || loading3}
                   className='mp__margTop10'
                 >
                   {loading ? 'Complete transfer in widget' : 'Transfer'}
@@ -316,7 +315,7 @@ export default function WrapDemo(props) {
                     color="primary"
                     onChange={handleAmount2}
                     aria-label="text alignment"
-                    disabled={loading2 || loading}
+                    disabled={loading3 || loading2 || loading}
                   >
                     <ToggleButton value="0.01" aria-label="left aligned">
                       0.01 ETH
@@ -333,7 +332,7 @@ export default function WrapDemo(props) {
                   onClick={requestTransfer2}
                   variant="contained"
                   startIcon={<SwipeRightIcon />}
-                  disabled={loading2 || loading || amount === null || loading3}
+                  disabled={loading3 || loading2 || loading || amount === null || loading3}
                   className='mp__margTop10'
                 >
                   {loading ? 'Complete transfer in widget' : 'Wrap and Transfer'}
@@ -407,7 +406,7 @@ export default function WrapDemo(props) {
                   onClick={requestTransfer3}
                   variant="contained"
                   startIcon={<SwipeRightIcon />}
-                  disabled={loading2 || loading || amount === null || loading3}
+                  disabled={loading3 || loading2 || loading || amount === null || loading3}
                   className='mp__margTop10'
                 >
                   {loading ? 'Complete transfer in widget' : 'Transfer back'}
