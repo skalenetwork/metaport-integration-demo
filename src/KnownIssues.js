@@ -9,6 +9,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 
 import BugReportIcon from '@mui/icons-material/BugReport';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -37,7 +38,7 @@ export default function KnownIssues() {
             <ListItem>
                 <ListItemAvatar>
                     <Avatar>
-                        <BugReportIcon />
+                        <LightbulbIcon />
                     </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary="Error handling" secondary="In the current version error handling is not implemented, check out developer console to see errors." />
@@ -45,7 +46,7 @@ export default function KnownIssues() {
             <ListItem>
                 <ListItemAvatar>
                     <Avatar>
-                        <BugReportIcon />
+                        <LightbulbIcon />
                     </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary="Separate wrap/unwrap actions" secondary="Separate wrap/unwrap actions are not available in this version." />
