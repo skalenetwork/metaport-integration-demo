@@ -167,16 +167,16 @@ const widget = new Metaport({
 function createMuiTheme(th) {
   return createTheme({
     palette: {
-    mode: th.mode,
-    background: {
-      paper: th.background
-    },
-    primary: {
-      main: th.primary,
-    },
-    secondary: {    
-      main: th.background
-    },
+      mode: th.mode,
+      background: {
+        paper: th.background
+      },
+      primary: {
+        main: th.primary,
+      },
+      secondary: {
+        main: th.background
+      },
     },
   })
 }
@@ -208,87 +208,84 @@ function App() {
 
   return (
     <ThemeProvider theme={muiTheme}>
-    <div className={'AppWrap demoApp ' + (themes[colorScheme].mode === 'dark' ? 'demoApp-dark' : 'demoApp-light')}>
-      <Header
-        colorScheme={colorScheme}
-        setColorScheme={setColorScheme}
-      />
-      <div className='mainApp'>
-      <Container maxWidth="sm" >
-        <Box>
-        <Stack spacing={3}>
-            <div className='mp__margTop20'>
-              <Typography weight="bold" sx={{ mb: 1.5 }} variant='h4' color="text.primary" className='no-marg-bott'>
-                Metaport integration
-              </Typography>
-            </div>
-            <Box sx={{ width: '100%', typography: 'body1' }}>
-              <TabContext value={value}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                  <TabList onChange={handleChange} aria-label="lab API tabs example">
-                    <Tab label='S2S Demo' value="1" />
-                    <Tab label="Wrap Demo" value="2" />
-                    <Tab label="Sandbox" value="3" />
-                  </TabList>
+      <div className={'AppWrap demoApp ' + (themes[colorScheme].mode === 'dark' ? 'demoApp-dark' : 'demoApp-light')}>
+        <Header
+          colorScheme={colorScheme}
+          setColorScheme={setColorScheme}
+        />
+        <div className='mainApp'>
+          <Container maxWidth="sm" >
+            <Box>
+              <Stack spacing={3}>
+                <div className='mp__margTop20'>
+                  <Typography weight="bold" sx={{ mb: 1.5 }} variant='h4' color="text.primary" className='no-marg-bott'>
+                    Metaport integration
+                  </Typography>
+                </div>
+                <Box sx={{ width: '100%', typography: 'body1' }}>
+                  <TabContext value={value}>
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                      <TabList onChange={handleChange} aria-label="lab API tabs example">
+                        <Tab label='S2S Demo' value="1" />
+                        <Tab label="Wrap Demo" value="2" />
+                        <Tab label="Sandbox" value="3" />
+                      </TabList>
+                    </Box>
+                    <TabPanel value="1">
+                      <S2SDemo
+                        open={open}
+                        setOpen={setOpen}
+                        widget={widget}
+                      />
+                    </TabPanel>
+                    <TabPanel value="2">
+                      <WrapDemo
+                        open={open}
+                        setOpen={setOpen}
+                        widget={widget}
+                      />
+                    </TabPanel>
+                    <TabPanel value="3">
+                      <Sandbox
+                        open={open}
+                        setOpen={setOpen}
+                        widget={widget}
+                      />
+                    </TabPanel>
+                  </TabContext>
                 </Box>
-                <TabPanel value="1">
-                  <S2SDemo
-                    open={open}
-                    setOpen={setOpen}
-                    widget={widget}
-                  /> 
-                </TabPanel>
-                <TabPanel value="2">
-                  <WrapDemo
-                      open={open}
-                      setOpen={setOpen}
-                      widget={widget}
-                    /> 
-                </TabPanel>
-                <TabPanel value="3">
-                  <Sandbox
-                    open={open}
-                    setOpen={setOpen}
-                    widget={widget}
-                  /> 
-                </TabPanel>
-              </TabContext>
+
+                <div>
+                  <Link className='mp__margTop20' target="_blank" href="https://rapping-zuben-elakrab.explorer.staging-v2.skalenodes.com/" underline="none">
+                    <Button size='small' variant="outlined" startIcon={<LinkIcon />} className='no-text-transform'>
+                      Go to Europa Hub block explorer (rapping-zuben-elakrab)
+                    </Button>
+                  </Link>
+
+
+                  <Link target="_blank" href="https://deafening-maia.explorer.staging-v2.skalenodes.com/" underline="none" >
+                    <Button size='small' variant="outlined" startIcon={<LinkIcon />} className='no-text-transform mp__margTop10 marg-bott-20'>
+                      Go to Block Brawlers block explorer (deafening-maia)
+                    </Button>
+                  </Link>
+                </div>
+
+                <Typography weight="bold" sx={{ mb: 1.5 }} variant='h5' color="text.primary" style={{ "fontWeight": "600" }}>
+                  Known issues
+                </Typography>
+                <KnownIssues />
+              </Stack>
             </Box>
+          </Container>
+        </div>
 
-            <div>
-              <Link className='mp__margTop20' target="_blank" href="https://rapping-zuben-elakrab.explorer.staging-v2.skalenodes.com/" underline="none">
-                <Button size='small' variant="outlined" startIcon={<LinkIcon />} className='no-text-transform'>
-                  Go to Europa Hub block explorer (rapping-zuben-elakrab)
-                </Button>
-              </Link>
-          
-           
-              <Link  target="_blank" href="https://deafening-maia.explorer.staging-v2.skalenodes.com/" underline="none" >
-                <Button size='small' variant="outlined" startIcon={<LinkIcon />} className='no-text-transform mp__margTop10 marg-bott-20'>
-                  Go to Block Brawlers block explorer (deafening-maia)
-                </Button>
-              </Link>
-            </div>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+            Tokens transfered successfully!
+          </Alert>
+        </Snackbar>
 
-            <Typography weight="bold" sx={{ mb: 1.5 }} variant='h5' color="text.primary" style={{"fontWeight": "600"}}>
-              Known issues
-            </Typography>
-
-            <KnownIssues/>
-
-
-        </Stack>
-        </Box>
-      </Container>
       </div>
-
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          Tokens transfered successfully!
-        </Alert>
-      </Snackbar>
-      
-    </div>
     </ThemeProvider>
   );
 }

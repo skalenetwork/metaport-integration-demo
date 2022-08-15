@@ -87,7 +87,7 @@ export default function WrapDemo(props) {
     };
   }, []);
 
-  
+
   function widgetConnected() {
     setConnected(true);
   }
@@ -118,13 +118,14 @@ export default function WrapDemo(props) {
     props.widget.transfer({
       amount: amount,
       schains: ['mainnet', 'rapping-zuben-elakrab'],
-      tokens: {'mainnet': {'eth': {}}
+      tokens: {
+        'mainnet': { 'eth': {} }
       }
     });
   }
 
   function transferComplete(e) {
-    if(!e.detail.unwrap) {
+    if (!e.detail.unwrap) {
       setLoading(false);
       setLoading2(false);
       setLoading3(false);
@@ -201,227 +202,227 @@ export default function WrapDemo(props) {
     return balance ? 'Balance: ' + balance + ' ETH' : 'Loading balance...'
   }
 
-    return (<div>
-        <Stack spacing={3}>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10'>
-                This demo demonstrates ETH transfer from Mainnet to Europa chain, wrap and transfer of wrapped wreth to Block Brawlers.
+  return (<div>
+    <Stack spacing={3}>
+      <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10'>
+        This demo demonstrates ETH transfer from Mainnet to Europa chain, wrap and transfer of wrapped wreth to Block Brawlers.
+      </Typography>
+
+      <Card variant="outlined">
+        <CardContent>
+          <Chip label="Step 1: Transfer ETH from Mainnet" />
+
+          <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+            <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+              <div className='mp__flex'>
+                <img className='ethLogo' src={logoEth} />
+              </div>
+              <div className='mp__flex marg-ri-20 marg-left-20'>
+                <ArrowForwardIcon />
+              </div>
+              <div className='mp__flex'>
+                <img className='skaleLogo' src={logoRuby} />
+              </div>
+            </div>
+          </Stack>
+
+          <div className='padd-top-20 padd-bott-20'>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              Transfer ETH from Ethereum Mainnet to Europa chain
             </Typography>
-
-            <Card variant="outlined">
-              <CardContent>
-                <Chip label="Step 1: Transfer ETH from Mainnet" />
-
-                <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
-                    <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
-                      <div className='mp__flex'>
-                        <img className='ethLogo' src={logoEth}/>
-                      </div>
-                      <div className='mp__flex marg-ri-20 marg-left-20'>
-                        <ArrowForwardIcon/>
-                      </div>
-                      <div className='mp__flex'>
-                        <img className='skaleLogo' src={logoRuby}/>
-                      </div>
-                    </div>
-                </Stack>
-
-                <div className='padd-top-20 padd-bott-20'>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    Transfer ETH from Ethereum Mainnet to Europa chain
-                  </Typography>
-                  {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">  
+            {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">  
                     {getBalanceText(balance)}
                   </Typography> */}
-                </div>
+          </div>
 
-                <div className='mp__margTop20 mp__margBott10'>
-                  <ToggleButtonGroup
-                    value={amount}
-                    exclusive
-                    color="primary"
-                    onChange={handleAmount}
-                    aria-label="text alignment"
-                    disabled={loading3 || loading2 || loading}
-                  >
-                    <ToggleButton value="0.01" aria-label="left aligned">
-                      0.01 ETH
-                    </ToggleButton>
-                    <ToggleButton value="0.02" aria-label="centered">
-                      0.02 ETH
-                    </ToggleButton>
-                    <ToggleButton value="0.1" aria-label="right aligned">
-                      0.1 ETH
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </div>
-                <Button
-                  onClick={requestTransfer}
-                  variant="contained"
-                  startIcon={<SwipeRightIcon />}
-                  disabled={loading3 || loading2 || loading || amount === null || loading3}
-                  className='mp__margTop10'
-                >
-                  {loading ? 'Complete transfer in widget' : 'Transfer'}
-                </Button>
+          <div className='mp__margTop20 mp__margBott10'>
+            <ToggleButtonGroup
+              value={amount}
+              exclusive
+              color="primary"
+              onChange={handleAmount}
+              aria-label="text alignment"
+              disabled={loading3 || loading2 || loading}
+            >
+              <ToggleButton value="0.01" aria-label="left aligned">
+                0.01 ETH
+              </ToggleButton>
+              <ToggleButton value="0.02" aria-label="centered">
+                0.02 ETH
+              </ToggleButton>
+              <ToggleButton value="0.1" aria-label="right aligned">
+                0.1 ETH
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
+          <Button
+            onClick={requestTransfer}
+            variant="contained"
+            startIcon={<SwipeRightIcon />}
+            disabled={loading3 || loading2 || loading || amount === null || loading3}
+            className='mp__margTop10'
+          >
+            {loading ? 'Complete transfer in widget' : 'Transfer'}
+          </Button>
 
-                <Button 
-                  onClick={cancelTransferRequest}
-                  variant="contained"
-                  className={'mp__margTop10 marg-left-10 ' + (loading ? '' : 'hidden')}
-                  startIcon={<CancelIcon />}
-                >
-                  Cancel
-                </Button>
-              </CardContent>
-            </Card>
+          <Button
+            onClick={cancelTransferRequest}
+            variant="contained"
+            className={'mp__margTop10 marg-left-10 ' + (loading ? '' : 'hidden')}
+            startIcon={<CancelIcon />}
+          >
+            Cancel
+          </Button>
+        </CardContent>
+      </Card>
 
-            <Card variant="outlined">
-              <CardContent>
-                <Chip label="Step 2: Wrap and transfer to another chain" />
+      <Card variant="outlined">
+        <CardContent>
+          <Chip label="Step 2: Wrap and transfer to another chain" />
 
-                <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
-                    <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
-                      <div className='mp__flex'>
-                        <img className='skaleLogo' src={logoRuby}/>
-                      </div>
-                      <div className='mp__flex marg-ri-20 marg-left-20'>
-                        <ArrowForwardIcon/>
-                      </div>
-                      <div className='mp__flex'>
-                        <MoveUpIcon style={{width: '40pt', height: '40pt'}}/>
-                      </div>
-                      <div className='mp__flex marg-ri-20 marg-left-20'>
-                        <ArrowForwardIcon/>
-                      </div>
-                      <div className='mp__flex'>
-                        <img className='bbLogo' src={logoBB}/>
-                      </div>
-                    </div>
-                </Stack>
+          <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+            <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+              <div className='mp__flex'>
+                <img className='skaleLogo' src={logoRuby} />
+              </div>
+              <div className='mp__flex marg-ri-20 marg-left-20'>
+                <ArrowForwardIcon />
+              </div>
+              <div className='mp__flex'>
+                <MoveUpIcon style={{ width: '40pt', height: '40pt' }} />
+              </div>
+              <div className='mp__flex marg-ri-20 marg-left-20'>
+                <ArrowForwardIcon />
+              </div>
+              <div className='mp__flex'>
+                <img className='bbLogo' src={logoBB} />
+              </div>
+            </div>
+          </Stack>
 
-                <div className='padd-top-20 padd-bott-20'>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    Wrap ETHC into wreth and transfer to Block Brawlers
-                  </Typography>
-                  {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">  
+          <div className='padd-top-20 padd-bott-20'>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              Wrap ETHC into wreth and transfer to Block Brawlers
+            </Typography>
+            {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">  
                     {getBalanceText(balance)}
                   </Typography> */}
-                </div>
+          </div>
 
-                <div className='mp__margTop20 mp__margBott10'>
-                  <ToggleButtonGroup
-                    value={amount2}
-                    exclusive
-                    color="primary"
-                    onChange={handleAmount2}
-                    aria-label="text alignment"
-                    disabled={loading3 || loading2 || loading}
-                  >
-                    <ToggleButton value="0.01" aria-label="left aligned">
-                      0.01 ETH
-                    </ToggleButton>
-                    <ToggleButton value="0.02" aria-label="centered">
-                      0.02 ETH
-                    </ToggleButton>
-                    <ToggleButton value="0.1" aria-label="right aligned">
-                      0.1 ETH
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </div>
-                <Button
-                  onClick={requestTransfer2}
-                  variant="contained"
-                  startIcon={<SwipeRightIcon />}
-                  disabled={loading3 || loading2 || loading || amount === null || loading3}
-                  className='mp__margTop10'
-                >
-                  {loading ? 'Complete transfer in widget' : 'Wrap and Transfer'}
-                </Button>
+          <div className='mp__margTop20 mp__margBott10'>
+            <ToggleButtonGroup
+              value={amount2}
+              exclusive
+              color="primary"
+              onChange={handleAmount2}
+              aria-label="text alignment"
+              disabled={loading3 || loading2 || loading}
+            >
+              <ToggleButton value="0.01" aria-label="left aligned">
+                0.01 ETH
+              </ToggleButton>
+              <ToggleButton value="0.02" aria-label="centered">
+                0.02 ETH
+              </ToggleButton>
+              <ToggleButton value="0.1" aria-label="right aligned">
+                0.1 ETH
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
+          <Button
+            onClick={requestTransfer2}
+            variant="contained"
+            startIcon={<SwipeRightIcon />}
+            disabled={loading3 || loading2 || loading || amount === null || loading3}
+            className='mp__margTop10'
+          >
+            {loading ? 'Complete transfer in widget' : 'Wrap and Transfer'}
+          </Button>
 
-                <Button 
-                  onClick={cancelTransferRequest2}
-                  variant="contained"
-                  className={'mp__margTop10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
-                  startIcon={<CancelIcon />}
-                >
-                  Cancel
-                </Button>
-              </CardContent>
-            </Card>
+          <Button
+            onClick={cancelTransferRequest2}
+            variant="contained"
+            className={'mp__margTop10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
+            startIcon={<CancelIcon />}
+          >
+            Cancel
+          </Button>
+        </CardContent>
+      </Card>
 
-            <Card variant="outlined">
-              <CardContent>
-                <Chip label="Step 3: Transfer back and unwrap" />
+      <Card variant="outlined">
+        <CardContent>
+          <Chip label="Step 3: Transfer back and unwrap" />
 
-                <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
-                    <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
-                      <div className='mp__flex'>
-                        <img className='bbLogo' src={logoBB}/>
-                      </div>
-                      <div className='mp__flex marg-ri-20 marg-left-20'>
-                        <ArrowForwardIcon/>
-                      </div>
-                      <div className='mp__flex'>
-                        <img className='skaleLogo' src={logoRuby}/>
-                      </div>
-                      <div className='mp__flex marg-ri-20 marg-left-20'>
-                        <ArrowForwardIcon/>
-                      </div>
-                      <div className='mp__flex'>
-                        <MoveDownIcon style={{width: '40pt', height: '40pt'}}/>
-                      </div>
-                    </div>
-                </Stack>
+          <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+            <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+              <div className='mp__flex'>
+                <img className='bbLogo' src={logoBB} />
+              </div>
+              <div className='mp__flex marg-ri-20 marg-left-20'>
+                <ArrowForwardIcon />
+              </div>
+              <div className='mp__flex'>
+                <img className='skaleLogo' src={logoRuby} />
+              </div>
+              <div className='mp__flex marg-ri-20 marg-left-20'>
+                <ArrowForwardIcon />
+              </div>
+              <div className='mp__flex'>
+                <MoveDownIcon style={{ width: '40pt', height: '40pt' }} />
+              </div>
+            </div>
+          </Stack>
 
-                <div className='padd-top-20 padd-bott-20'>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    Transfer wreth from Block Brawlers back to Europa chain and unwrap them
-                  </Typography>
-                  {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">  
+          <div className='padd-top-20 padd-bott-20'>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              Transfer wreth from Block Brawlers back to Europa chain and unwrap them
+            </Typography>
+            {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">  
                     {getBalanceText(balance)}
                   </Typography> */}
-                </div>
+          </div>
 
-                <div className='mp__margTop20 mp__margBott10'>
-                  <ToggleButtonGroup
-                    value={amount3}
-                    exclusive
-                    color="primary"
-                    onChange={handleAmount3}
-                    aria-label="text alignment"
-                    disabled={loading2 || loading || amount === null || loading3}
-                  >
-                    <ToggleButton value="0.01" aria-label="left aligned">
-                      0.01 ETH
-                    </ToggleButton>
-                    <ToggleButton value="0.02" aria-label="centered">
-                      0.02 ETH
-                    </ToggleButton>
-                    <ToggleButton value="0.1" aria-label="right aligned">
-                      0.1 ETH
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </div>
-                <Button
-                  onClick={requestTransfer3}
-                  variant="contained"
-                  startIcon={<SwipeRightIcon />}
-                  disabled={loading3 || loading2 || loading || amount === null || loading3}
-                  className='mp__margTop10'
-                >
-                  {loading ? 'Complete transfer in widget' : 'Transfer back'}
-                </Button>
+          <div className='mp__margTop20 mp__margBott10'>
+            <ToggleButtonGroup
+              value={amount3}
+              exclusive
+              color="primary"
+              onChange={handleAmount3}
+              aria-label="text alignment"
+              disabled={loading2 || loading || amount === null || loading3}
+            >
+              <ToggleButton value="0.01" aria-label="left aligned">
+                0.01 ETH
+              </ToggleButton>
+              <ToggleButton value="0.02" aria-label="centered">
+                0.02 ETH
+              </ToggleButton>
+              <ToggleButton value="0.1" aria-label="right aligned">
+                0.1 ETH
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
+          <Button
+            onClick={requestTransfer3}
+            variant="contained"
+            startIcon={<SwipeRightIcon />}
+            disabled={loading3 || loading2 || loading || amount === null || loading3}
+            className='mp__margTop10'
+          >
+            {loading ? 'Complete transfer in widget' : 'Transfer back'}
+          </Button>
 
-                <Button
-                  onClick={cancelTransferRequest3}
-                  variant="contained"
-                  className={'mp__margTop10 marg-left-10 ' + (loading3 ? '' : 'hidden')}
-                  startIcon={<CancelIcon />}
-                >
-                  Cancel
-                </Button>
-              </CardContent>
-            </Card> 
-        </Stack>
-    </div>)
+          <Button
+            onClick={cancelTransferRequest3}
+            variant="contained"
+            className={'mp__margTop10 marg-left-10 ' + (loading3 ? '' : 'hidden')}
+            startIcon={<CancelIcon />}
+          >
+            Cancel
+          </Button>
+        </CardContent>
+      </Card>
+    </Stack>
+  </div>)
 }

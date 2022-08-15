@@ -72,7 +72,7 @@ export default function S2SDemo(props) {
       false
     );
 
-    props.widget.updateParams({tokens: TOKENS});
+    props.widget.updateParams({ tokens: TOKENS });
 
     const interval = setInterval(() => requestBalances(), 5000);
     return () => {
@@ -80,14 +80,14 @@ export default function S2SDemo(props) {
     };
   }, []);
 
-  
+
   function widgetConnected() {
     setConnected(true);
   }
 
   function requestBalances() {
-    props.widget.requestBalance({'schainName': 'rapping-zuben-elakrab', 'tokenSymbol': 'usdc'});
-    props.widget.requestBalance({'schainName': 'deafening-maia', 'tokenSymbol': 'usdc'});
+    props.widget.requestBalance({ 'schainName': 'rapping-zuben-elakrab', 'tokenSymbol': 'usdc' });
+    props.widget.requestBalance({ 'schainName': 'deafening-maia', 'tokenSymbol': 'usdc' });
   }
 
   const handleAmount = (event, newAmount) => {
@@ -107,7 +107,7 @@ export default function S2SDemo(props) {
   }
 
   function transferComplete(e) {
-    if(!e.detail.unwrap) {
+    if (!e.detail.unwrap) {
       setLoading(false);
       setLoading2(false);
       props.widget.reset();
@@ -152,149 +152,149 @@ export default function S2SDemo(props) {
     return balance ? 'Balance: ' + balance + ' USDC' : 'Loading balance...'
   }
 
-    return (<div>
-        <Stack spacing={3}>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10'>
-                This demo demonstrates Metaport integration with custom widget theme and event-based interactions.
+  return (<div>
+    <Stack spacing={3}>
+      <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10'>
+        This demo demonstrates Metaport integration with custom widget theme and event-based interactions.
+      </Typography>
+
+      <Card variant="outlined">
+        <CardContent>
+          <Chip label="Step 1: Transfer from origin chain" />
+
+          <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+            <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+              <div className='mp__flex'>
+                <img className='skaleLogo' src={logoRuby} />
+              </div>
+              <div className='mp__flex marg-ri-20 marg-left-20'>
+                <ArrowForwardIcon />
+              </div>
+              <div className='mp__flex'>
+                <img className='bbLogo' src={logoBB} />
+              </div>
+            </div>
+          </Stack>
+
+
+          <div className='padd-top-20 padd-bott-20'>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              Transfer usdc from Europa Hub to Block Brawlers
             </Typography>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              {getBalanceText(balance)}
+            </Typography>
+          </div>
 
-            <Card variant="outlined">
-              <CardContent>
-                <Chip label="Step 1: Transfer from origin chain" />
+          <div className='mp__margTop20 mp__margBott10'>
+            <ToggleButtonGroup
+              value={amount}
+              exclusive
+              color="primary"
+              onChange={handleAmount}
+              aria-label="text alignment"
+              disabled={loading2 || loading}
+            >
+              <ToggleButton value="100" aria-label="left aligned">
+                100 usdc
+              </ToggleButton>
+              <ToggleButton value="250" aria-label="centered">
+                250 usdc
+              </ToggleButton>
+              <ToggleButton value="500" aria-label="right aligned">
+                500 usdc
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
+          <Button
+            onClick={requestTransfer}
+            variant="contained"
+            startIcon={<SwipeRightIcon />}
+            disabled={loading2 || loading || amount === null}
+            className='mp__margTop10'
+          >
+            {loading ? 'Complete transfer in widget' : 'Transfer'}
+          </Button>
 
-                <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
-                    <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
-                    <div className='mp__flex'>
-                        <img className='skaleLogo' src={logoRuby}/>
-                    </div>
-                    <div className='mp__flex marg-ri-20 marg-left-20'>
-                        <ArrowForwardIcon/>
-                    </div>
-                    <div className='mp__flex'>
-                        <img className='bbLogo' src={logoBB}/>
-                    </div>
-                    </div>
-                </Stack>
-                
-
-                <div className='padd-top-20 padd-bott-20'>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    Transfer usdc from Europa Hub to Block Brawlers
-                  </Typography>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">  
-                    {getBalanceText(balance)}
-                  </Typography>
-                </div>
-
-                <div className='mp__margTop20 mp__margBott10'>
-                  <ToggleButtonGroup
-                    value={amount}
-                    exclusive
-                    color="primary"
-                    onChange={handleAmount}
-                    aria-label="text alignment"
-                    disabled={loading2 || loading}
-                  >
-                    <ToggleButton value="100" aria-label="left aligned">
-                      100 usdc
-                    </ToggleButton>
-                    <ToggleButton value="250" aria-label="centered">
-                      250 usdc
-                    </ToggleButton>
-                    <ToggleButton value="500" aria-label="right aligned">
-                      500 usdc
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </div>
-                <Button
-                  onClick={requestTransfer}
-                  variant="contained"
-                  startIcon={<SwipeRightIcon />}
-                  disabled={loading2 || loading || amount === null}
-                  className='mp__margTop10'
-                >
-                  {loading ? 'Complete transfer in widget' : 'Transfer'}
-                </Button>
-
-                <Button 
-                  onClick={cancelTransferRequest}
-                  variant="contained"
-                  className={'mp__margTop10 marg-left-10 ' + (loading ? '' : 'hidden')}
-                  startIcon={<CancelIcon />}
-                >
-                  Cancel
-                </Button>
-              </CardContent>
-            </Card>
+          <Button
+            onClick={cancelTransferRequest}
+            variant="contained"
+            className={'mp__margTop10 marg-left-10 ' + (loading ? '' : 'hidden')}
+            startIcon={<CancelIcon />}
+          >
+            Cancel
+          </Button>
+        </CardContent>
+      </Card>
 
 
-            <Card variant="outlined" sx={{ minWidth: 275 }}>
-              <CardContent>
-              <Chip label="Step 2: Transfer clones back" />
+      <Card variant="outlined" sx={{ minWidth: 275 }}>
+        <CardContent>
+          <Chip label="Step 2: Transfer clones back" />
 
-              <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
-                <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
-                    <div className='mp__flex'>
-                    <img className='bbLogo' src={logoBB}/>
-                    </div>
-                    <div className='mp__flex marg-ri-20 marg-left-20'>
-                    <ArrowForwardIcon/>
-                    </div>
-                    <div className='mp__flex'>
-                    <img className='skaleLogo' src={logoRuby}/>
-                    </div>
-                </div>
-              </Stack>
-              
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                Transfer cloned usdc from Block Brawlers back to origin chain
-                </Typography>
+          <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+            <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+              <div className='mp__flex'>
+                <img className='bbLogo' src={logoBB} />
+              </div>
+              <div className='mp__flex marg-ri-20 marg-left-20'>
+                <ArrowForwardIcon />
+              </div>
+              <div className='mp__flex'>
+                <img className='skaleLogo' src={logoRuby} />
+              </div>
+            </div>
+          </Stack>
 
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  {getBalanceText(balance2)}
-                </Typography>
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            Transfer cloned usdc from Block Brawlers back to origin chain
+          </Typography>
 
-                <div className='mp__margTop20 mp__margBott10'>
-                  <ToggleButtonGroup
-                    value={amount2}
-                    exclusive
-                    color="primary"
-                    onChange={handleAmount2}
-                    aria-label="text alignment"
-                    disabled={loading2 || loading}
-                  >
-                    <ToggleButton value="50" aria-label="left aligned">
-                      50 usdc
-                    </ToggleButton>
-                    <ToggleButton value="70" aria-label="centered">
-                      70 usdc
-                    </ToggleButton>
-                    <ToggleButton value="300" aria-label="right aligned">
-                      300 usdc
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </div>
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            {getBalanceText(balance2)}
+          </Typography>
 
-                <Button
-                  onClick={requestTransferBack}
-                  variant="contained"
-                  startIcon={<SwipeLeftIcon />}
-                  disabled={loading2 || loading || amount2 === null}
-                  className='mp__margTop10'
-                >
-                  {loading2 ? 'Complete transfer in widget' : 'Transfer'}
-                </Button>
+          <div className='mp__margTop20 mp__margBott10'>
+            <ToggleButtonGroup
+              value={amount2}
+              exclusive
+              color="primary"
+              onChange={handleAmount2}
+              aria-label="text alignment"
+              disabled={loading2 || loading}
+            >
+              <ToggleButton value="50" aria-label="left aligned">
+                50 usdc
+              </ToggleButton>
+              <ToggleButton value="70" aria-label="centered">
+                70 usdc
+              </ToggleButton>
+              <ToggleButton value="300" aria-label="right aligned">
+                300 usdc
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
 
-                <Button 
-                  onClick={cancelTransferRequest2}
-                  variant="contained"
-                  className={'mp__margTop10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
-                  startIcon={<CancelIcon />}
-                >
-                  Cancel
-                </Button>
-              </CardContent>
-            </Card>
-        </Stack>
-    </div>)
+          <Button
+            onClick={requestTransferBack}
+            variant="contained"
+            startIcon={<SwipeLeftIcon />}
+            disabled={loading2 || loading || amount2 === null}
+            className='mp__margTop10'
+          >
+            {loading2 ? 'Complete transfer in widget' : 'Transfer'}
+          </Button>
+
+          <Button
+            onClick={cancelTransferRequest2}
+            variant="contained"
+            className={'mp__margTop10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
+            startIcon={<CancelIcon />}
+          >
+            Cancel
+          </Button>
+        </CardContent>
+      </Card>
+    </Stack>
+  </div>)
 }
