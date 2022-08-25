@@ -31,8 +31,7 @@ const TOKENS = {
     'erc20': {
       "usdc": {
         "name": "USDC",
-        "address": "0x296cc9cCCDB292bEf53dF56f732CeFE592222C0c",
-        // "iconUrl": "https://ruby.exchange/images/tokens/ruby-square.png"
+        "address": "0x296cc9cCCDB292bEf53dF56f732CeFE592222C0c"
       }
     }
   }
@@ -101,6 +100,7 @@ export default function S2SDemo(props) {
   function requestTransfer() {
     setLoading(true);
     props.widget.transfer({
+      lockAmount: true,
       amount: amount,
       schains: ['rapping-zuben-elakrab', 'deafening-maia']
     })

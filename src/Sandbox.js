@@ -16,9 +16,10 @@ const TOKENS = {
   },
   'rapping-zuben-elakrab': {
     'erc20': {
-      "usdc": {
-        "name": "USDC",
-        "address": "0x296cc9cCCDB292bEf53dF56f732CeFE592222C0c"
+      "ruby": {
+        "name": "RUBY",
+        "address": "0x296cc9cCCDB292bEf53dF56f732CeFE592222C0c",
+        "iconUrl": "https://ruby.exchange/images/tokens/ruby-square.png"
       },
       'wreth': {
         'address': '0xD8AA84EbC1CfafFa4968cDd493235A0ae0872b73',

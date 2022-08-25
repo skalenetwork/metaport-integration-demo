@@ -65,6 +65,7 @@ const widget = new Metaport({
   // open: false,
   mainnetEndpoint: MAINNET_ENDPOINT,
   network: 'staging',
+  openButton: false, // default = true
   chains: [
     // 'rapping-zuben-elakrab',
     // 'deafening-maia'
