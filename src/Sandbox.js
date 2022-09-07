@@ -14,29 +14,29 @@ const TOKENS_AUTO = {
   'mainnet': {
     'eth': {},
     'erc20': {
-      "_M_0xF5F7aD7d2C37CAe59207af43D0BEB4b361fB9Ec8": {
-        "name": "MINDS",
-        "iconUrl": "https://s2.coinmarketcap.com/static/img/coins/64x64/8675.png"
-      },
-      "_TST_0x46DF31a9DD2C8c775D926dfBde572A25ccBF23B7": {
-        "name": "D1T",
-        "iconUrl": "https://s2.coinmarketcap.com/static/img/coins/64x64/1697.png"
-      },
-      "_TST_0x9a60ad42841C15c86548b4B9c7996AdC4E57446e": {
-        "name": "TEST TOKEN",
-        "iconUrl": "https://s2.coinmarketcap.com/static/img/coins/64x64/4847.png"
-      },
-      "_RUBY_0x918D8F3670c67f14Ff3fEB025D46B9C165d12a23": {
-        "name": "RUBY TOKEN",
-        "iconUrl": "https://ruby.exchange/images/tokens/ruby-square.png"
-      },
       "_USDP_0x8E870D67F660D95d5be530380D0eC0bd388289E1": {
         "iconUrl": "https://ruby.exchange/images/tokens/usdp-square.png"
+      },
+      "_USDC_0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48": {
+        "decimals": "6"
       }
     }
   }
 };
 
+
+const TOKENS_MANUAL_MAINNET = {
+  'mainnet': {
+    'eth': {},
+    'erc20': {
+      "usdc": {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USDC",
+        "decimals": "6"
+      }
+    }
+  }
+};
 
 const TOKENS_MANUAL = {
   'mainnet': {
@@ -56,16 +56,17 @@ const TOKENS_MANUAL = {
 };
 
 
-const SCHAINS = ['mainnet', 'deafening-maia', 'fancy-rasalhague', 'fit-graffias', 'whispering-turais', 'glamorous-grumium', 'stocky-pleione', 'attractive-merope', 'honorable-steel-rasalhague', 'naive-musty-merope', 'actual-secret-cebalrai', 'rapping-zuben-elakrab', 'roasted-thankful-unukalhai'];
+// const SCHAINS = ['mainnet', 'deafening-maia', 'fancy-rasalhague', 'fit-graffias', 'whispering-turais', 'glamorous-grumium', 'stocky-pleione', 'attractive-merope', 'honorable-steel-rasalhague', 'naive-musty-merope', 'actual-secret-cebalrai', 'rapping-zuben-elakrab', 'roasted-thankful-unukalhai'];
 //const SCHAINS = ['rapping-zuben-elakrab', 'mainnet'];
 // const SCHAINS = ['mainnet', 'rapping-zuben-elakrab', 'deafening-maia'];
-// const SCHAINS = ['elated-tan-skat', 'mainnet'];
+
+const SCHAINS = ['mainnet', 'elated-tan-skat'];
 
 export default function Sandbox(props) {
 
   function openSandbox() {
     props.widget.reset();
-    props.widget.updateParams({ chains: SCHAINS, tokens: TOKENS_AUTO });
+    props.widget.updateParams({ chains: SCHAINS, tokens: TOKENS_MANUAL_MAINNET });
     props.widget.open();
   }
 

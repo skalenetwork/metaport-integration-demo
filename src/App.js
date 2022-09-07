@@ -22,8 +22,6 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
-import MoveUpIcon from '@mui/icons-material/MoveUp';
-
 import LinkIcon from '@mui/icons-material/Link';
 
 import { Metaport } from '@skalenetwork/metaport';
@@ -64,10 +62,10 @@ export const themes = {
 const widget = new Metaport({
   // open: false,
   mainnetEndpoint: MAINNET_ENDPOINT,
-  //network: 'mainnet',
-  network: 'staging',
+  network: 'mainnet',
+  // network: 'staging',
   openButton: false, // default = true
-  autoLookup: true, // default = true
+  autoLookup: false, // default = true
   chains: [
     // 'rapping-zuben-elakrab',
     // 'deafening-maia'
@@ -85,89 +83,9 @@ const widget = new Metaport({
       alias: 'Block Brawlers'
     }
   },
-  tokens: {
-    // "rapping-zuben-elakrab": {
-    //   "erc20": {
-    //     // "skl": {
-    //     //   "name": "SKALE",
-    //     //   "address": "0xDeba4B3e3DCD346E93AC26d8b4e44d0B6D417617"
-    //     // },
-    //     "usdc": {
-    //       "name": "USDC",
-    //       "address": "0x296cc9cCCDB292bEf53dF56f732CeFE592222C0c"
-    //     },
-    //     // "eth": {
-    //     //   "name": "ETH",
-    //     //   "address": "0x296cc9cCCDB292bEf53dF56f732CeFE592222C0c",
-    //     //   "wrapperAddress": "0x0"
-    //     // },
-    //     // "dai": {
-    //     //   "name": "Dai",
-    //     //   "address": "0x5EC4B83f3d52df5bF8177da452C13E679B571f7F"
-    //     // },
-    //     // "usdc": {
-    //     //   "name": "USD Coin",
-    //     //   "address": "0xD19FCA4B1e29224dC19472b5fB860626f236a457"
-    //     // }
-    //   }
-    // }
-  },
+  tokens: {},
   theme: themes['green']
 });
-
-
-// const widget = new IMAWidget({
-//   open: false,
-//   // mainnetEndpoint: 'http://mainnet-geth.skalenodes.com:8545/',
-//   // mainnetEndpoint: 'https://rpc.ankr.com/eth',
-//   mainnetEndpoint: 'https://rinkeby.infura.io/v3/fceb4b9a4eee40adb65ede10666e0915',
-//   network: 'staging',
-//   schains: [
-//     'mainnet',
-//     'rapping-zuben-elakrab'
-//   ],
-//   tokens: {
-//     'mainnet': {
-//       'eth': {},
-//     }
-//   },
-//   schainAliases: {
-//     'rapping-zuben-elakrab': 'Europa SKALE Chain'
-//   },
-//   theme: themes['green']
-// });
-
-
-// const widget = new IMAWidget({
-//   open: false,
-//   // mainnetEndpoint: 'http://mainnet-geth.skalenodes.com:8545/',
-//   // mainnetEndpoint: 'https://rpc.ankr.com/eth',
-//   mainnetEndpoint: 'https://rinkeby.infura.io/v3/fceb4b9a4eee40adb65ede10666e0915',
-//   network: 'staging',
-//   schains: [
-//     'rapping-zuben-elakrab',
-//     'deafening-maia'
-//   ],
-//   tokens: {
-//     'rapping-zuben-elakrab': {
-//       'erc20': {
-//         'wreth': {
-//           'address': '0xD8AA84EbC1CfafFa4968cDd493235A0ae0872b73',
-//           'name': 'wreth',
-//           'wraps': {
-//             'address': '0xD2Aaa00700000000000000000000000000000000',
-//             'symbol': 'ethc'
-//           }
-//         }
-//       }
-//     }
-//   },
-//   schainAliases: {
-//     'rapping-zuben-elakrab': 'Europa SKALE Chain',
-//     'deafening-maia': 'Block Brawlers'
-//   },
-//   theme: themes['green']
-// });
 
 
 function createMuiTheme(th) {
