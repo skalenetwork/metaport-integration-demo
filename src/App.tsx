@@ -24,13 +24,15 @@ import TabPanel from '@mui/lab/TabPanel';
 
 import LinkIcon from '@mui/icons-material/Link';
 
-import { Metaport } from '@skalenetwork/metaport';
+import { Metaport, interfaces } from '@skalenetwork/metaport';
 
 
 export const MAINNET_ENDPOINT = process.env["REACT_APP_MAINNET_ENDPOINT"];
 
 
-export const themes = {
+interface MetaportThemesMap { [themeName: string]: interfaces.MetaportTheme; }
+
+export const themes: MetaportThemesMap = {
   'blue': {
     primary: '#00d4ff',
     background: '#0a2540',
@@ -62,7 +64,7 @@ export const themes = {
 const widget = new Metaport({
   // open: false,
   mainnetEndpoint: MAINNET_ENDPOINT,
-  network: 'mainnet',
+  skaleNetwork: 'mainnet',
   // network: 'staging',
   openButton: false, // default = true
   autoLookup: false, // default = true
@@ -88,7 +90,7 @@ const widget = new Metaport({
 });
 
 
-function createMuiTheme(th) {
+function createMuiTheme(th: any) {
   return createTheme({
     palette: {
       mode: th.mode,
@@ -114,11 +116,11 @@ function App() {
 
   const [value, setValue] = React.useState('1');
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
-  const handleClose = (event, reason) => {
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -142,7 +144,7 @@ function App() {
             <Box>
               <Stack spacing={3}>
                 <div className='mp__margTop20'>
-                  <Typography weight="bold" sx={{ mb: 1.5 }} variant='h4' color="text.primary" className='no-marg-bott'>
+                  <Typography sx={{ mb: 1.5 }} variant='h4' color="text.primary" className='no-marg-bott'>
                     Metaport integration
                   </Typography>
                 </div>
@@ -194,7 +196,7 @@ function App() {
                   </Link>
                 </div>
 
-                <Typography weight="bold" sx={{ mb: 1.5 }} variant='h5' color="text.primary" style={{ "fontWeight": "600" }}>
+                <Typography sx={{ mb: 1.5 }} variant='h5' color="text.primary" style={{ "fontWeight": "600" }}>
                   Known issues
                 </Typography>
                 <KnownIssues />
