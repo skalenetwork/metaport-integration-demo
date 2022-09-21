@@ -64,10 +64,10 @@ export const themes: MetaportThemesMap = {
 const widget = new Metaport({
   // open: false,
   mainnetEndpoint: MAINNET_ENDPOINT,
-  skaleNetwork: 'mainnet',
-  // network: 'staging',
+  // skaleNetwork: 'mainnet',
+  skaleNetwork: 'staging',
   openButton: false, // default = true
-  autoLookup: false, // default = true
+  // autoLookup: false, // default = true
   chains: [
     // 'rapping-zuben-elakrab',
     // 'deafening-maia'

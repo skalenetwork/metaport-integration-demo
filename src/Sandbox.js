@@ -57,10 +57,10 @@ const TOKENS_MANUAL = {
 
 
 // const SCHAINS = ['mainnet', 'deafening-maia', 'fancy-rasalhague', 'fit-graffias', 'whispering-turais', 'glamorous-grumium', 'stocky-pleione', 'attractive-merope', 'honorable-steel-rasalhague', 'naive-musty-merope', 'actual-secret-cebalrai', 'rapping-zuben-elakrab', 'roasted-thankful-unukalhai'];
-//const SCHAINS = ['rapping-zuben-elakrab', 'mainnet'];
+const SCHAINS = ['mainnet', 'deafening-maia', 'roasted-thankful-unukalhai'];
 // const SCHAINS = ['mainnet', 'rapping-zuben-elakrab', 'deafening-maia'];
 
-const SCHAINS = ['mainnet', 'elated-tan-skat'];
+// const SCHAINS = ['mainnet', 'elated-tan-skat'];
 
 export default function Sandbox(props) {
 
