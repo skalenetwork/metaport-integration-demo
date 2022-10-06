@@ -25,6 +25,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import LinkIcon from '@mui/icons-material/Link';
 
 import { Metaport, interfaces } from '@skalenetwork/metaport';
+import metaportConfig from './metaportConfig.json'
 
 
 export const MAINNET_ENDPOINT = process.env["REACT_APP_MAINNET_ENDPOINT"];
@@ -60,34 +61,7 @@ export const themes: MetaportThemesMap = {
   }
 }
 
-
-const widget = new Metaport({
-  // open: false,
-  mainnetEndpoint: MAINNET_ENDPOINT,
-  // skaleNetwork: 'mainnet',
-  skaleNetwork: 'staging',
-  openButton: false, // default = true
-  // autoLookup: false, // default = true
-  chains: [
-    // 'rapping-zuben-elakrab',
-    // 'deafening-maia'
-  ],
-  chainsMetadata: {
-    'elated-tan-skat': {
-      alias: 'Ruby Chain'
-    },
-    'rapping-zuben-elakrab': {
-      alias: 'Europa SKALE Chain', // optional
-      minSfuelWei: '27000000000000', // optional
-      faucetUrl: 'https://github.com/skalenetwork/skale-network' // optional
-    },
-    'deafening-maia': {
-      alias: 'Block Brawlers'
-    }
-  },
-  tokens: {},
-  theme: themes['green']
-});
+const widget = new Metaport(metaportConfig);
 
 
 function createMuiTheme(th: any) {
@@ -114,7 +88,7 @@ function App() {
   const [colorScheme, setColorScheme] = React.useState('green');
   const [muiTheme, setMuiTheme] = React.useState(createMuiTheme(themes[colorScheme]));
 
-  const [value, setValue] = React.useState('1');
+  const [value, setValue] = React.useState('3');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);

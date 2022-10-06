@@ -1860,8 +1860,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@skalenetwork/metaport@file:../metaport":
-  version "0.1.1"
+"@skalenetwork/metaport@0.1.1-develop.3":
+  version "0.1.1-develop.3"
+  resolved "https://registry.yarnpkg.com/@skalenetwork/metaport/-/metaport-0.1.1-develop.3.tgz#3b7a01dac0b00d12b4120a2bac0937b553b43715"
+  integrity sha512-jHv+eTHrReTNS9OkiHLUSFGZfkEe7XajzHduHo0hmLMdfl8BFnHFkJjG9QAsISliY916SLovkgxdmtveyEcK7Q==
 
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
   version "2.2.3"

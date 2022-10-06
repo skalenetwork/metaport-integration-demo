@@ -15,7 +15,7 @@
     "react-scripts": "5.0.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0",
-    "@skalenetwork/metaport": "0.1.1-develop.0",
+    "@skalenetwork/metaport": "0.1.1-develop.3",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.8.4",
