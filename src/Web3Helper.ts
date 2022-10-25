@@ -10,10 +10,10 @@ import proxyEndpoints from './metadata/proxy.json';
 export interface TokenAbisMap { [tokenType: string]: AbiItem[]; };
 
 const ERC_ABIS: TokenAbisMap = {
-    'erc20': erc20Abi,
-    'erc721': erc721Abi,
-    'erc721meta': erc721MetaAbi,
-    'erc1155': erc1155Abi
+    erc20: erc20Abi.abi as AbiItem[],
+    erc721: erc721Abi.abi as AbiItem[],
+    // erc721meta: erc721MetaAbi.abi as AbiItem[],
+    erc1155: erc1155Abi.abi as AbiItem[]
 }
 
 

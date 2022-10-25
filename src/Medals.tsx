@@ -163,41 +163,48 @@ export default function Medals(props: any) {
           In this demo you can transfer ERC1155 medals between the chains. <br />
           There are 100 1st place medals, 2000 2nd place medals and 30000 3rd place medals.
         </Typography>
-        <h2>Chain 1</h2>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
-            {TOKENS.map((token) => <Grid item lg={4} md={6} xs={12} key={token.tokenId}>
-              <MedalCard
-                chains={[CHAIN_1_NAME, CHAIN_2_NAME]}
-                token={token}
-                transfer={transfer}
-                setAmounts={setAmountsS1}
-                amounts={amountsS1}
-                balances={balancesS1}
-              />
-            </Grid>)}
-          </Grid>
-        </Box>
-        <h2>Chain 2</h2>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
-            {TOKENS.map((token) => <Grid item lg={4} md={6} xs={12} key={token.tokenId}>
-              <MedalCard
-                key={token.tokenId}
-                chains={[CHAIN_2_NAME, CHAIN_1_NAME]}
-                token={token}
-                transfer={transfer}
-                setAmounts={setAmountsS2}
-                amounts={amountsS2}
-                balances={balancesS2}
-              />
-            </Grid>)}
-          </Grid>
-        </Box>
+
+        {props.address ? (
+          <div>
+            <h2>Chain 1</h2>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={2}>
+                {TOKENS.map((token) => <Grid item lg={4} md={6} xs={12} key={token.tokenId}>
+                  <MedalCard
+                    chains={[CHAIN_1_NAME, CHAIN_2_NAME]}
+                    token={token}
+                    transfer={transfer}
+                    setAmounts={setAmountsS1}
+                    amounts={amountsS1}
+                    balances={balancesS1}
+                  />
+                </Grid>)}
+              </Grid>
+            </Box>
+            <h2>Chain 2</h2>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={2}>
+                {TOKENS.map((token) => <Grid item lg={4} md={6} xs={12} key={token.tokenId}>
+                  <MedalCard
+                    key={token.tokenId}
+                    chains={[CHAIN_2_NAME, CHAIN_1_NAME]}
+                    token={token}
+                    transfer={transfer}
+                    setAmounts={setAmountsS2}
+                    amounts={amountsS2}
+                    balances={balancesS2}
+                  />
+                </Grid>)}
+              </Grid>
+            </Box>
+          </div>
+        ) : (<h2>Connect your wallet using 'Connect wallet' button to try this demo</h2>)}
       </Stack>
+
+
       <Snackbar
         open={open}
-        autoHideDuration={60000}
+        autoHideDuration={8000}
         onClose={handleClose}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
