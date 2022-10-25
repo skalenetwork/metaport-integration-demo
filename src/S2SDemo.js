@@ -73,10 +73,10 @@ export default function S2SDemo(props) {
 
     props.widget.updateParams({ tokens: TOKENS });
 
-    const interval = setInterval(() => requestBalances(), 5000);
-    return () => {
-      clearInterval(interval);
-    };
+    // const interval = setInterval(() => requestBalances(), 5000);
+    // return () => {
+    //   clearInterval(interval);
+    // };
   }, []);
 
 

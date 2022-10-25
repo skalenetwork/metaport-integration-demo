@@ -26,10 +26,13 @@ import Fab from '@mui/material/Fab';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
 
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+import MetamaskConnector from './MetamaskConnector';
 
 import logo from './skale_lg.svg';
 
@@ -39,66 +42,60 @@ import { themes } from './App';
 export default class Header extends React.Component {
   render() {
     return (
-      <AppBar elevation={0} position="fixed" className="sk-header">
+      <AppBar elevation={0} position="fixed" className="sk-header" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar className='mp__flex'>
-            <div className="mp__flex fl-centered-vert mp__flexGrow">
-              <img src={logo} className="logo" alt="logo" />
-            </div>
-            <div className="mp__flex mp__margRi10 fl-center-vert">
-              <Typography weight="bold" variant='p' color="text.primary" className='no-marg try-text'>
-                Try different themes
-              </Typography>
-            </div>
-            <div className="mp__flex marg-ri-20 try-icon">
-              <ArrowForwardIcon/>
-            </div>
-            <div className="mp__flex marg-ri-20 marg-left-10">
-              <Fab
-                size="small"
-                style={{backgroundColor: themes.violet.primary}}
-                onClick={() => {this.props.setColorScheme('violet')}}
-              >
-                <LightModeIcon style={{color: 'white'}} />
-              </Fab>
-            </div>
-            <div className="mp__flex marg-ri-20">
-              <Fab
-                size="small"
-                style={{backgroundColor: themes.blue.primary}}
-                onClick={() => {this.props.setColorScheme('blue')}}
-              >
-                <DarkModeIcon />
-              </Fab>
-            </div>
-            <div className="mp__flex marg-ri-20">
-              <Fab
-                size="small"
-                style={{backgroundColor: themes.orange.primary}}
-                onClick={() => {this.props.setColorScheme('orange')}}
-              >
-                <LightModeIcon style={{color: 'white'}} />
-              </Fab>
-            </div>
-            <div className="mp__flex marg-ri-20">
-              <Fab
-                size="small"
-                style={{backgroundColor: themes.green.primary}}
-                onClick={() => {this.props.setColorScheme('green')}}
-              >
-                <DarkModeIcon />
-              </Fab>
-            </div>
-            <div className="mp__flex margf-ri-20">
-              <Fab
-                size="small"
-                style={{backgroundColor: themes.pink.primary}}
-                onClick={() => {this.props.setColorScheme('pink')}}
-              >
-                <LightModeIcon style={{color: 'white'}} />
-              </Fab>
-            </div>
+          <div className="mp__flex fl-centered-vert mp__flexGrow">
+            <Link to="/">
+            <img src={logo} className="logo" alt="logo" />
+            </Link>
+          </div>
+          {/* <div className="mp__flex mp__margRi10 fl-center-vert">
+            <Typography weight="bold" variant='p' color="text.primary" className='no-marg try-text'>
+              Try different themes
+            </Typography>
+          </div>
+          <div className="mp__flex mp__margRi10 try-icon">
+            <ArrowForwardIcon />
+          </div> */}
+          <div className="mp__flex mp__margRi10 marg-left-10">
+            <Fab
+              size="small"
+              style={{ backgroundColor: themes.violet.primary }}
+              onClick={() => { this.props.setColorScheme('violet') }}
+            >
+              <LightModeIcon style={{ color: 'white' }} />
+            </Fab>
+          </div>
+          <div className="mp__flex mp__margRi10">
+            <Fab
+              size="small"
+              style={{ backgroundColor: themes.default.primary }}
+              onClick={() => { this.props.setColorScheme('default') }}
+            >
+              <DarkModeIcon />
+            </Fab>
+          </div>
+          <div className="mp__flex mp__margRi10">
+            <Fab
+              size="small"
+              style={{ backgroundColor: themes.pink.primary }}
+              onClick={() => { this.props.setColorScheme('pink') }}
+            >
+              <LightModeIcon style={{ color: 'white' }} />
+            </Fab>
+          </div>
+          <div className="mp__flex mp__margRi20">
+            <Fab
+              size="small"
+              style={{ backgroundColor: themes.green.primary }}
+              onClick={() => { this.props.setColorScheme('green') }}
+            >
+              <DarkModeIcon />
+            </Fab>
+          </div>
+          <MetamaskConnector address={this.props.address} connectMetamask={this.props.connectMetamask}/>
         </Toolbar>
-    </AppBar>
+      </AppBar>
     )
   }
 }

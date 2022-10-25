@@ -81,10 +81,10 @@ export default function WrapDemo(props) {
       false
     );
 
-    const interval = setInterval(() => requestBalances(), 5000);
-    return () => {
-      clearInterval(interval);
-    };
+    // const interval = setInterval(() => requestBalances(), 5000);
+    // return () => {
+    //   clearInterval(interval);
+    // };
   }, []);
 
 
