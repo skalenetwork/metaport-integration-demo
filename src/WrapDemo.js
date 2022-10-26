@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 
-import logoBB from './bb_logo.png';
-import logoRuby from './ruby_logo.png';
-import logoEth from './eth.png';
+import logoEth from './img/eth.png';
+import dogLogo from './img/dog_face_3d.png';
+import catLogo from './img/cat_face_3d.png';
 
+import Container from '@mui/material/Container';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
@@ -93,8 +94,8 @@ export default function WrapDemo(props) {
   }
 
   function requestBalances() {
-    props.widget.requestBalance('rapping-zuben-elakrab', 'eth');
-    props.widget.requestBalance('mainnet', 'eth');
+    props.metaport.requestBalance('rapping-zuben-elakrab', 'eth');
+    props.metaport.requestBalance('mainnet', 'eth');
   }
 
   const handleAmount = (event, newAmount) => {
@@ -115,7 +116,7 @@ export default function WrapDemo(props) {
 
   function requestTransfer() {
     setLoading(true);
-    props.widget.transfer({
+    props.metaport.transfer({
       amount: amount,
       schains: ['mainnet', 'rapping-zuben-elakrab'],
       tokens: {
@@ -129,8 +130,8 @@ export default function WrapDemo(props) {
       setLoading(false);
       setLoading2(false);
       setLoading3(false);
-      props.widget.reset();
-      props.widget.close();
+      props.metaport.reset();
+      props.metaport.close();
       props.setOpen(true);
     }
   }
@@ -146,7 +147,7 @@ export default function WrapDemo(props) {
 
   function requestTransfer2() {
     setLoading2(true);
-    props.widget.transfer({
+    props.metaport.transfer({
       amount: amount2,
       schains: ['rapping-zuben-elakrab', 'deafening-maia'],
       tokens: ETH_TOKEN
@@ -155,7 +156,7 @@ export default function WrapDemo(props) {
 
   function requestTransfer3() {
     setLoading3(true);
-    props.widget.transfer({
+    props.metaport.transfer({
       amount: amount3,
       schains: ['deafening-maia', 'rapping-zuben-elakrab'],
       tokens: ETH_TOKEN
@@ -164,7 +165,7 @@ export default function WrapDemo(props) {
 
   function requestUnwrap() {
     setLoading4(true);
-    props.widget.unwrap({
+    props.metaport.unwrap({
       amount: amount4,
       schains: ['rapping-zuben-elakrab', 'deafening-maia'],
       tokens: ETH_TOKEN
@@ -173,26 +174,26 @@ export default function WrapDemo(props) {
 
   function cancelTransferRequest() {
     setLoading(false);
-    props.widget.reset();
-    props.widget.close();
+    props.metaport.reset();
+    props.metaport.close();
   }
 
   function cancelTransferRequest2() {
     setLoading2(false);
-    props.widget.reset();
-    props.widget.close();
+    props.metaport.reset();
+    props.metaport.close();
   }
 
   function cancelTransferRequest3() {
     setLoading3(false);
-    props.widget.reset();
-    props.widget.close();
+    props.metaport.reset();
+    props.metaport.close();
   }
 
   function cancelTransferRequest4() {
     setLoading4(false);
-    props.widget.reset();
-    props.widget.close();
+    props.metaport.reset();
+    props.metaport.close();
   }
 
   function getBalanceText(balance) {
@@ -202,227 +203,225 @@ export default function WrapDemo(props) {
     return balance ? 'Balance: ' + balance + ' ETH' : 'Loading balance...'
   }
 
-  return (<div>
-    <Stack spacing={3}>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10'>
-        This demo demonstrates ETH transfer from Mainnet to Europa chain, wrap and transfer of wrapped wreth to Block Brawlers.
-      </Typography>
+  return (
+    <Container maxWidth="md">
+      <Stack spacing={3}>
+        <h1 className="mp__noMarg">ETH Wrap Demo</h1>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10 mp__noMargTop'>
+          This demo demonstrates ETH transfer from Mainnet to Dog Chain, wrap and transfer of wrapped wrETH to Cat Chain.
+        </Typography>
+        <h2>This demo is not available at the moment</h2>
 
-      <Card variant="outlined">
-        <CardContent>
-          <Chip label="Step 1: Transfer ETH from Mainnet" />
+        {/* <Stack spacing={3}>
+          <Card variant="outlined">
+            <CardContent>
+              <Chip label="Step 1: Transfer ETH from Mainnet" />
 
-          <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
-            <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
-              <div className='mp__flex'>
-                <img className='ethLogo' src={logoEth} />
+              <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+                <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+                  <div className='mp__flex'>
+                    <img className='ethLogo' src={logoEth} />
+                  </div>
+                  <div className='mp__flex marg-ri-20 marg-left-20'>
+                    <ArrowForwardIcon />
+                  </div>
+                  <div className='mp__flex'>
+                    <img className='skaleLogo' src={dogLogo} />
+                  </div>
+                </div>
+              </Stack>
+
+              <div className='padd-top-20 padd-bott-20'>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                  Transfer ETH from Ethereum Mainnet to Dog Chain
+                </Typography>
               </div>
-              <div className='mp__flex marg-ri-20 marg-left-20'>
-                <ArrowForwardIcon />
+
+              <div className='mp__margTop20 mp__margBott10'>
+                <ToggleButtonGroup
+                  value={amount}
+                  exclusive
+                  color="primary"
+                  onChange={handleAmount}
+                  aria-label="text alignment"
+                  disabled={loading3 || loading2 || loading}
+                >
+                  <ToggleButton value="0.01" aria-label="left aligned">
+                    0.01 ETH
+                  </ToggleButton>
+                  <ToggleButton value="0.02" aria-label="centered">
+                    0.02 ETH
+                  </ToggleButton>
+                  <ToggleButton value="0.1" aria-label="right aligned">
+                    0.1 ETH
+                  </ToggleButton>
+                </ToggleButtonGroup>
               </div>
-              <div className='mp__flex'>
-                <img className='skaleLogo' src={logoRuby} />
+              <Button
+                onClick={requestTransfer}
+                variant="contained"
+                startIcon={<SwipeRightIcon />}
+                disabled={loading3 || loading2 || loading || amount === null || loading3}
+                className='mp__margTop10'
+              >
+                {loading ? 'Complete transfer in widget' : 'Transfer'}
+              </Button>
+
+              <Button
+                onClick={cancelTransferRequest}
+                variant="contained"
+                className={'mp__margTop10 marg-left-10 ' + (loading ? '' : 'hidden')}
+                startIcon={<CancelIcon />}
+              >
+                Cancel
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card variant="outlined">
+            <CardContent>
+              <Chip label="Step 2: Wrap and transfer to another chain" />
+
+              <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+                <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+                  <div className='mp__flex'>
+                    <img className='skaleLogo' src={dogLogo} />
+                  </div>
+                  <div className='mp__flex marg-ri-20 marg-left-20'>
+                    <ArrowForwardIcon />
+                  </div>
+                  <div className='mp__flex'>
+                    <MoveUpIcon style={{ width: '40pt', height: '40pt' }} />
+                  </div>
+                  <div className='mp__flex marg-ri-20 marg-left-20'>
+                    <ArrowForwardIcon />
+                  </div>
+                  <div className='mp__flex'>
+                    <img className='bbLogo' src={catLogo} />
+                  </div>
+                </div>
+              </Stack>
+
+              <div className='padd-top-20 padd-bott-20'>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                  Wrap ETHC into wreth and transfer to Cat Chain
+                </Typography>
+
               </div>
-            </div>
-          </Stack>
 
-          <div className='padd-top-20 padd-bott-20'>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              Transfer ETH from Ethereum Mainnet to Europa chain
-            </Typography>
-            {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">  
-                    {getBalanceText(balance)}
-                  </Typography> */}
-          </div>
-
-          <div className='mp__margTop20 mp__margBott10'>
-            <ToggleButtonGroup
-              value={amount}
-              exclusive
-              color="primary"
-              onChange={handleAmount}
-              aria-label="text alignment"
-              disabled={loading3 || loading2 || loading}
-            >
-              <ToggleButton value="0.01" aria-label="left aligned">
-                0.01 ETH
-              </ToggleButton>
-              <ToggleButton value="0.02" aria-label="centered">
-                0.02 ETH
-              </ToggleButton>
-              <ToggleButton value="0.1" aria-label="right aligned">
-                0.1 ETH
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </div>
-          <Button
-            onClick={requestTransfer}
-            variant="contained"
-            startIcon={<SwipeRightIcon />}
-            disabled={loading3 || loading2 || loading || amount === null || loading3}
-            className='mp__margTop10'
-          >
-            {loading ? 'Complete transfer in widget' : 'Transfer'}
-          </Button>
-
-          <Button
-            onClick={cancelTransferRequest}
-            variant="contained"
-            className={'mp__margTop10 marg-left-10 ' + (loading ? '' : 'hidden')}
-            startIcon={<CancelIcon />}
-          >
-            Cancel
-          </Button>
-        </CardContent>
-      </Card>
-
-      <Card variant="outlined">
-        <CardContent>
-          <Chip label="Step 2: Wrap and transfer to another chain" />
-
-          <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
-            <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
-              <div className='mp__flex'>
-                <img className='skaleLogo' src={logoRuby} />
+              <div className='mp__margTop20 mp__margBott10'>
+                <ToggleButtonGroup
+                  value={amount2}
+                  exclusive
+                  color="primary"
+                  onChange={handleAmount2}
+                  aria-label="text alignment"
+                  disabled={loading3 || loading2 || loading}
+                >
+                  <ToggleButton value="0.01" aria-label="left aligned">
+                    0.01 ETH
+                  </ToggleButton>
+                  <ToggleButton value="0.02" aria-label="centered">
+                    0.02 ETH
+                  </ToggleButton>
+                  <ToggleButton value="0.1" aria-label="right aligned">
+                    0.1 ETH
+                  </ToggleButton>
+                </ToggleButtonGroup>
               </div>
-              <div className='mp__flex marg-ri-20 marg-left-20'>
-                <ArrowForwardIcon />
-              </div>
-              <div className='mp__flex'>
-                <MoveUpIcon style={{ width: '40pt', height: '40pt' }} />
-              </div>
-              <div className='mp__flex marg-ri-20 marg-left-20'>
-                <ArrowForwardIcon />
-              </div>
-              <div className='mp__flex'>
-                <img className='bbLogo' src={logoBB} />
-              </div>
-            </div>
-          </Stack>
+              <Button
+                onClick={requestTransfer2}
+                variant="contained"
+                startIcon={<SwipeRightIcon />}
+                disabled={loading3 || loading2 || loading || amount === null || loading3}
+                className='mp__margTop10'
+              >
+                {loading ? 'Complete transfer in widget' : 'Wrap and Transfer'}
+              </Button>
 
-          <div className='padd-top-20 padd-bott-20'>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              Wrap ETHC into wreth and transfer to Block Brawlers
-            </Typography>
-            {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">  
-                    {getBalanceText(balance)}
-                  </Typography> */}
-          </div>
+              <Button
+                onClick={cancelTransferRequest2}
+                variant="contained"
+                className={'mp__margTop10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
+                startIcon={<CancelIcon />}
+              >
+                Cancel
+              </Button>
+            </CardContent>
+          </Card>
 
-          <div className='mp__margTop20 mp__margBott10'>
-            <ToggleButtonGroup
-              value={amount2}
-              exclusive
-              color="primary"
-              onChange={handleAmount2}
-              aria-label="text alignment"
-              disabled={loading3 || loading2 || loading}
-            >
-              <ToggleButton value="0.01" aria-label="left aligned">
-                0.01 ETH
-              </ToggleButton>
-              <ToggleButton value="0.02" aria-label="centered">
-                0.02 ETH
-              </ToggleButton>
-              <ToggleButton value="0.1" aria-label="right aligned">
-                0.1 ETH
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </div>
-          <Button
-            onClick={requestTransfer2}
-            variant="contained"
-            startIcon={<SwipeRightIcon />}
-            disabled={loading3 || loading2 || loading || amount === null || loading3}
-            className='mp__margTop10'
-          >
-            {loading ? 'Complete transfer in widget' : 'Wrap and Transfer'}
-          </Button>
+          <Card variant="outlined">
+            <CardContent>
+              <Chip label="Step 3: Transfer back and unwrap" />
 
-          <Button
-            onClick={cancelTransferRequest2}
-            variant="contained"
-            className={'mp__margTop10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
-            startIcon={<CancelIcon />}
-          >
-            Cancel
-          </Button>
-        </CardContent>
-      </Card>
+              <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
+                <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
+                  <div className='mp__flex'>
+                    <img className='bbLogo' src={catLogo} />
+                  </div>
+                  <div className='mp__flex marg-ri-20 marg-left-20'>
+                    <ArrowForwardIcon />
+                  </div>
+                  <div className='mp__flex'>
+                    <img className='skaleLogo' src={dogLogo} />
+                  </div>
+                  <div className='mp__flex marg-ri-20 marg-left-20'>
+                    <ArrowForwardIcon />
+                  </div>
+                  <div className='mp__flex'>
+                    <MoveDownIcon style={{ width: '40pt', height: '40pt' }} />
+                  </div>
+                </div>
+              </Stack>
 
-      <Card variant="outlined">
-        <CardContent>
-          <Chip label="Step 3: Transfer back and unwrap" />
+              <div className='padd-top-20 padd-bott-20'>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                  Transfer wreth from Cat Chain back to Dog Chain and unwrap them
+                </Typography>
 
-          <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
-            <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
-              <div className='mp__flex'>
-                <img className='bbLogo' src={logoBB} />
               </div>
-              <div className='mp__flex marg-ri-20 marg-left-20'>
-                <ArrowForwardIcon />
-              </div>
-              <div className='mp__flex'>
-                <img className='skaleLogo' src={logoRuby} />
-              </div>
-              <div className='mp__flex marg-ri-20 marg-left-20'>
-                <ArrowForwardIcon />
-              </div>
-              <div className='mp__flex'>
-                <MoveDownIcon style={{ width: '40pt', height: '40pt' }} />
-              </div>
-            </div>
-          </Stack>
 
-          <div className='padd-top-20 padd-bott-20'>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              Transfer wreth from Block Brawlers back to Europa chain and unwrap them
-            </Typography>
-            {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">  
-                    {getBalanceText(balance)}
-                  </Typography> */}
-          </div>
+              <div className='mp__margTop20 mp__margBott10'>
+                <ToggleButtonGroup
+                  value={amount3}
+                  exclusive
+                  color="primary"
+                  onChange={handleAmount3}
+                  aria-label="text alignment"
+                  disabled={loading2 || loading || amount === null || loading3}
+                >
+                  <ToggleButton value="0.01" aria-label="left aligned">
+                    0.01 ETH
+                  </ToggleButton>
+                  <ToggleButton value="0.02" aria-label="centered">
+                    0.02 ETH
+                  </ToggleButton>
+                  <ToggleButton value="0.1" aria-label="right aligned">
+                    0.1 ETH
+                  </ToggleButton>
+                </ToggleButtonGroup>
+              </div>
+              <Button
+                onClick={requestTransfer3}
+                variant="contained"
+                startIcon={<SwipeRightIcon />}
+                disabled={loading3 || loading2 || loading || amount === null || loading3}
+                className='mp__margTop10'
+              >
+                {loading ? 'Complete transfer in widget' : 'Transfer back'}
+              </Button>
 
-          <div className='mp__margTop20 mp__margBott10'>
-            <ToggleButtonGroup
-              value={amount3}
-              exclusive
-              color="primary"
-              onChange={handleAmount3}
-              aria-label="text alignment"
-              disabled={loading2 || loading || amount === null || loading3}
-            >
-              <ToggleButton value="0.01" aria-label="left aligned">
-                0.01 ETH
-              </ToggleButton>
-              <ToggleButton value="0.02" aria-label="centered">
-                0.02 ETH
-              </ToggleButton>
-              <ToggleButton value="0.1" aria-label="right aligned">
-                0.1 ETH
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </div>
-          <Button
-            onClick={requestTransfer3}
-            variant="contained"
-            startIcon={<SwipeRightIcon />}
-            disabled={loading3 || loading2 || loading || amount === null || loading3}
-            className='mp__margTop10'
-          >
-            {loading ? 'Complete transfer in widget' : 'Transfer back'}
-          </Button>
-
-          <Button
-            onClick={cancelTransferRequest3}
-            variant="contained"
-            className={'mp__margTop10 marg-left-10 ' + (loading3 ? '' : 'hidden')}
-            startIcon={<CancelIcon />}
-          >
-            Cancel
-          </Button>
-        </CardContent>
-      </Card>
-    </Stack>
-  </div>)
+              <Button
+                onClick={cancelTransferRequest3}
+                variant="contained"
+                className={'mp__margTop10 marg-left-10 ' + (loading3 ? '' : 'hidden')}
+                startIcon={<CancelIcon />}
+              >
+                Cancel
+              </Button>
+            </CardContent>
+          </Card>
+        </Stack> */}
+      </Stack>
+    </Container>)
 }

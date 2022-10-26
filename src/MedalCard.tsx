@@ -45,7 +45,7 @@ export default function MedalCard(props: any) {
           {props.token.description}
         </Typography>
         <AmountInput
-          setAmount={props.setAmount}
+          setAmounts={props.setAmounts}
           tokenId={props.token.tokenId}
           amounts={props.amounts}
         />

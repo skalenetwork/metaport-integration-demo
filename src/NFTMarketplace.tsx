@@ -91,9 +91,8 @@ export default function NFTMarketplace(props: any) {
         <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10 mp__noMargTop'>
           In this demo you can try ERC721 NFT transfers
         </Typography>
-
-
-        <h2>Mainnet</h2>
+        <h2>This demo is not available at the moment</h2>
+        {/* <h2>Mainnet</h2>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={4}>
@@ -117,98 +116,16 @@ export default function NFTMarketplace(props: any) {
                 </CardContent>
               </Card>
             </Grid>
-            {/* <Grid item xs={4}>
-              <Card variant="outlined" sx={{ minWidth: 275 }} className='marg-bott-20'>
-                <CardContent>
-                  <Chip label="Common Item" />
-                  <div className="mp__flex mp__flexCentered fullWidth nftImgWrap">
-                    <img src={planet2Img} className="nftImg mp__flexGrow mp__flexCentered" alt="logo" />
-                  </div>
-                  <h3>Planet #2</h3>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margTop20'>
-                    Item description placeholder text goes here.
-                  </Typography>
-                  <Button
-                    onClick={() => { }}
-                    variant="contained"
-                    className='mp__margTop10 demoBtn fullWidth'
-                  >
-                    Transfer to SKALE Chain
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={4}>
-              <Card variant="outlined" sx={{ minWidth: 275 }} className='marg-bott-20'>
-                <CardContent>
-                  <Chip color="warning" label="Rare Item" />
-                  <div className="mp__flex fullWidth">
-                    <img src={satelliteImg} className="nftImg mp__flexGrow mp__flexCentered" alt="logo" />
-                  </div>
-                  <h3>SKALE Satellite</h3>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margTop20'>
-                    Item description placeholder text goes here.
-                  </Typography>
-                  <Button
-                    onClick={() => { }}
-                    variant="contained"
-                    className='mp__margTop10 demoBtn fullWidth'
-                  >
-                    Transfer to SKALE Chain
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid> */}
+          
           </Grid>
         </Box>
 
         <h2>SKALE Chain</h2>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
-            {/* <Grid item xs={4}>
-              <Card variant="outlined" sx={{ minWidth: 275 }} className='marg-bott-20'>
-                <CardContent>
-                  <Chip label="Common Item" />
-                  <div className="mp__flex fullWidth">
-                    <img src={planet3Img} className="nftImg mp__flexGrow mp__flexCentered" alt="logo" />
-                  </div>
-                  <h3>Planet #3</h3>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margTop20'>
-                    Item description placeholder text goes here.
-                  </Typography>
-                  <Button
-                    onClick={() => { }}
-                    variant="contained"
-                    className='mp__margTop10 demoBtn fullWidth'
-                  >
-                    Transfer to Mainnet
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={4}>
-              <Card variant="outlined" sx={{ minWidth: 275 }} className='marg-bott-20'>
-                <CardContent>
-                  <Chip label="Common Item" />
-                  <div className="mp__flex fullWidth">
-                    <img src={planet1Img} className="nftImg mp__flexGrow mp__flexCentered" alt="logo" />
-                  </div>
-                  <h3>Planet #1</h3>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margTop20'>
-                    Item description placeholder text goes here.
-                  </Typography>
-                  <Button
-                    onClick={() => { }}
-                    variant="contained"
-                    className='mp__margTop10 demoBtn fullWidth'
-                  >
-                    Transfer to Mainnet
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid> */}
+            
           </Grid>
-        </Box>
+        </Box> */}
       </Stack>
     </Container>
   )

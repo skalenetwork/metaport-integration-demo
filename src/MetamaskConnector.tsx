@@ -4,8 +4,8 @@ import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import ButtonBase from '@mui/material/ButtonBase/ButtonBase';
 
-import electric_plug_3d from './electric_plug_3d.png';
-import face_with_monocle_3d from './face_with_monocle_3d.png';
+import electric_plug_3d from './img/electric_plug_3d.png';
+import face_with_monocle_3d from './img/face_with_monocle_3d.png';
 
 
 export default function MetamaskConnector(props: any) {

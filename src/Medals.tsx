@@ -163,10 +163,9 @@ export default function Medals(props: any) {
           In this demo you can transfer ERC1155 medals between the chains. <br />
           There are 100 1st place medals, 2000 2nd place medals and 30000 3rd place medals.
         </Typography>
-
         {props.address ? (
           <div>
-            <h2>Chain 1</h2>
+            <h2>Dog Chain</h2>
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={2}>
                 {TOKENS.map((token) => <Grid item lg={4} md={6} xs={12} key={token.tokenId}>
@@ -181,7 +180,7 @@ export default function Medals(props: any) {
                 </Grid>)}
               </Grid>
             </Box>
-            <h2>Chain 2</h2>
+            <h2>Cat Chain</h2>
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={2}>
                 {TOKENS.map((token) => <Grid item lg={4} md={6} xs={12} key={token.tokenId}>

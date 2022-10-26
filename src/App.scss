@@ -351,6 +351,7 @@ h4 {
   line-height: 1.7 !important;
   border-radius: 15px !important;
   font-weight: 600 !important;
+  box-shadow: none !important;
 }
 
 
@@ -436,4 +437,8 @@ input::-webkit-inner-spin-button {
 
 .MuiSnackbar-root .MuiPaper-root {
   padding: 5px 15px !important;
+}
+
+.chainLogo{
+  width: 120px;
 }
