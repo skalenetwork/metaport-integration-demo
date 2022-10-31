@@ -7,6 +7,9 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+
 import { Metaport, interfaces } from '@skalenetwork/metaport';
 import metaportConfig from './metaportConfig.json'
 
@@ -69,6 +72,9 @@ function createMuiTheme(th: any) {
 
 
 function App() {
+
+  const [open, setOpen] = React.useState(false);
+
   const [colorScheme, setColorScheme] = React.useState('default');
   const [muiTheme, setMuiTheme] = React.useState(createMuiTheme(themes[colorScheme]));
 
@@ -104,6 +110,13 @@ function App() {
     }
   }
 
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
   const darkMode = themes[colorScheme].mode === 'dark';
 
   return (
@@ -122,7 +135,16 @@ function App() {
         <SkDrawer />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Toolbar />
-          <Router address={address} metaport={metaport} />
+          <Router address={address} metaport={metaport}  setOpen={setOpen}/>
+          <Snackbar
+            open={open}
+            autoHideDuration={8000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+              Transfer completed
+            </Alert>
+          </Snackbar>
         </Box>
       </Box>
     </ThemeProvider >

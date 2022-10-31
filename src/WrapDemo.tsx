@@ -23,24 +23,11 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import MoveUpIcon from '@mui/icons-material/MoveUp';
 import MoveDownIcon from '@mui/icons-material/MoveDown';
 
-
-const ETH_TOKEN = {
-  'rapping-zuben-elakrab': {
-    'erc20': {
-      'wreth': {
-        'address': '0xD8AA84EbC1CfafFa4968cDd493235A0ae0872b73',
-        'name': 'wreth',
-        'wraps': {
-          'address': '0xD2Aaa00700000000000000000000000000000000',
-          'symbol': 'ethc'
-        }
-      }
-    }
-  }
-};
+import { interfaces, dataclasses } from '@skalenetwork/metaport';
+import metaportConfig from './metaportConfig.json'
 
 
-export default function WrapDemo(props) {
+export default function WrapDemo(props: any) {
   const [connected, setConnected] = React.useState(false);
 
   const [loading, setLoading] = React.useState(false);
@@ -76,12 +63,6 @@ export default function WrapDemo(props) {
       false
     );
 
-    window.addEventListener(
-      "metaport_balance",
-      updateTokenBalance,
-      false
-    );
-
     // const interval = setInterval(() => requestBalances(), 5000);
     // return () => {
     //   clearInterval(interval);
@@ -93,114 +74,87 @@ export default function WrapDemo(props) {
     setConnected(true);
   }
 
-  function requestBalances() {
-    props.metaport.requestBalance('rapping-zuben-elakrab', 'eth');
-    props.metaport.requestBalance('mainnet', 'eth');
-  }
-
-  const handleAmount = (event, newAmount) => {
+  const handleAmount = (event: any, newAmount: React.SetStateAction<string>) => {
     setAmount(newAmount);
   };
 
-  const handleAmount2 = (event, newAmount) => {
+  const handleAmount2 = (event: any, newAmount: React.SetStateAction<string>) => {
     setAmount2(newAmount);
   };
 
-  const handleAmount3 = (event, newAmount) => {
+  const handleAmount3 = (event: any, newAmount: React.SetStateAction<string>) => {
     setAmount3(newAmount);
   };
 
-  const handleAmount4 = (event, newAmount) => {
+  const handleAmount4 = (event: any, newAmount: React.SetStateAction<string>) => {
     setAmount4(newAmount);
   };
 
   function requestTransfer() {
     setLoading(true);
-    props.metaport.transfer({
+    const params: interfaces.TransferParams = {
       amount: amount,
-      schains: ['mainnet', 'rapping-zuben-elakrab'],
-      tokens: {
-        'mainnet': { 'eth': {} }
-      }
-    });
+      chains: [metaportConfig.chains[0], metaportConfig.chains[1]],
+      tokenKeyname: 'eth',
+      tokenType: dataclasses.TokenType.eth,
+      lockValue: true
+    };
+    props.metaport.transfer(params);
   }
 
-  function transferComplete(e) {
+  function transferComplete(e: any) {
     if (!e.detail.unwrap) {
       setLoading(false);
       setLoading2(false);
       setLoading3(false);
       props.metaport.reset();
       props.metaport.close();
-      props.setOpen(true);
-    }
-  }
-
-  function updateTokenBalance(e) {
-    if (e.detail.schainName == 'rapping-zuben-elakrab') {
-      setBalance(e.detail.balance);
-    }
-    if (e.detail.schainName == 'deafening-maia') {
-      setBalance2(e.detail.balance);
+      props.setOpen(true); // TODO: fix!
     }
   }
 
   function requestTransfer2() {
     setLoading2(true);
-    props.metaport.transfer({
+    const params: interfaces.TransferParams = {
       amount: amount2,
-      schains: ['rapping-zuben-elakrab', 'deafening-maia'],
-      tokens: ETH_TOKEN
-    });
+      chains: [metaportConfig.chains[1], metaportConfig.chains[2]],
+      tokenKeyname: '_wrETH_0xBA3f8192e28224790978794102C0D7aaa65B7d70',
+      tokenType: dataclasses.TokenType.erc20,
+      lockValue: true
+    };
+    props.metaport.transfer(params);
   }
 
   function requestTransfer3() {
     setLoading3(true);
-    props.metaport.transfer({
+    const params: interfaces.TransferParams = {
       amount: amount3,
-      schains: ['deafening-maia', 'rapping-zuben-elakrab'],
-      tokens: ETH_TOKEN
-    });
-  }
-
-  function requestUnwrap() {
-    setLoading4(true);
-    props.metaport.unwrap({
-      amount: amount4,
-      schains: ['rapping-zuben-elakrab', 'deafening-maia'],
-      tokens: ETH_TOKEN
-    });
+      chains: [metaportConfig.chains[2], metaportConfig.chains[1]],
+      tokenKeyname: '_wrETH_0xBA3f8192e28224790978794102C0D7aaa65B7d70',
+      tokenType: dataclasses.TokenType.erc20,
+      lockValue: true
+    };
+    props.metaport.transfer(params);
   }
 
   function cancelTransferRequest() {
     setLoading(false);
-    props.metaport.reset();
     props.metaport.close();
   }
 
   function cancelTransferRequest2() {
     setLoading2(false);
-    props.metaport.reset();
     props.metaport.close();
   }
 
   function cancelTransferRequest3() {
     setLoading3(false);
-    props.metaport.reset();
     props.metaport.close();
   }
 
   function cancelTransferRequest4() {
     setLoading4(false);
-    props.metaport.reset();
     props.metaport.close();
-  }
-
-  function getBalanceText(balance) {
-    if (!connected) {
-      return 'Click \'Transfer\' to start'
-    }
-    return balance ? 'Balance: ' + balance + ' ETH' : 'Loading balance...'
   }
 
   return (
@@ -210,9 +164,7 @@ export default function WrapDemo(props) {
         <Typography sx={{ mb: 1.5 }} color="text.secondary" className='mp__margBott10 mp__noMargTop'>
           This demo demonstrates ETH transfer from Mainnet to Dog Chain, wrap and transfer of wrapped wrETH to Cat Chain.
         </Typography>
-        <h2>This demo is not available at the moment</h2>
-
-        {/* <Stack spacing={3}>
+        <Stack spacing={3}>
           <Card variant="outlined">
             <CardContent>
               <Chip label="Step 1: Transfer ETH from Mainnet" />
@@ -226,7 +178,7 @@ export default function WrapDemo(props) {
                     <ArrowForwardIcon />
                   </div>
                   <div className='mp__flex'>
-                    <img className='skaleLogo' src={dogLogo} />
+                    <img className='chainLogo' src={dogLogo} />
                   </div>
                 </div>
               </Stack>
@@ -262,7 +214,7 @@ export default function WrapDemo(props) {
                 variant="contained"
                 startIcon={<SwipeRightIcon />}
                 disabled={loading3 || loading2 || loading || amount === null || loading3}
-                className='mp__margTop10'
+                className='mp__margTop10 demoBtn'
               >
                 {loading ? 'Complete transfer in widget' : 'Transfer'}
               </Button>
@@ -270,7 +222,7 @@ export default function WrapDemo(props) {
               <Button
                 onClick={cancelTransferRequest}
                 variant="contained"
-                className={'mp__margTop10 marg-left-10 ' + (loading ? '' : 'hidden')}
+                className={'demoBtn mp__margTop10 marg-left-10 ' + (loading ? '' : 'hidden')}
                 startIcon={<CancelIcon />}
               >
                 Cancel
@@ -285,7 +237,7 @@ export default function WrapDemo(props) {
               <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
                 <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
                   <div className='mp__flex'>
-                    <img className='skaleLogo' src={dogLogo} />
+                    <img className='chainLogo' src={dogLogo} />
                   </div>
                   <div className='mp__flex marg-ri-20 marg-left-20'>
                     <ArrowForwardIcon />
@@ -297,7 +249,7 @@ export default function WrapDemo(props) {
                     <ArrowForwardIcon />
                   </div>
                   <div className='mp__flex'>
-                    <img className='bbLogo' src={catLogo} />
+                    <img className='chainLogo' src={catLogo} />
                   </div>
                 </div>
               </Stack>
@@ -334,7 +286,7 @@ export default function WrapDemo(props) {
                 variant="contained"
                 startIcon={<SwipeRightIcon />}
                 disabled={loading3 || loading2 || loading || amount === null || loading3}
-                className='mp__margTop10'
+                className='mp__margTop10 demoBtn'
               >
                 {loading ? 'Complete transfer in widget' : 'Wrap and Transfer'}
               </Button>
@@ -342,7 +294,7 @@ export default function WrapDemo(props) {
               <Button
                 onClick={cancelTransferRequest2}
                 variant="contained"
-                className={'mp__margTop10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
+                className={'demoBtn mp__margTop10 marg-left-10 ' + (loading2 ? '' : 'hidden')}
                 startIcon={<CancelIcon />}
               >
                 Cancel
@@ -357,13 +309,13 @@ export default function WrapDemo(props) {
               <Stack className="mp__margTop10 mp__margBott10" spacing={1}>
                 <div className='mp__flex fl-centered-vert mp__margTop20 marg-bott-20'>
                   <div className='mp__flex'>
-                    <img className='bbLogo' src={catLogo} />
+                    <img className='chainLogo' src={catLogo} />
                   </div>
                   <div className='mp__flex marg-ri-20 marg-left-20'>
                     <ArrowForwardIcon />
                   </div>
                   <div className='mp__flex'>
-                    <img className='skaleLogo' src={dogLogo} />
+                    <img className='chainLogo' src={dogLogo} />
                   </div>
                   <div className='mp__flex marg-ri-20 marg-left-20'>
                     <ArrowForwardIcon />
@@ -406,7 +358,7 @@ export default function WrapDemo(props) {
                 variant="contained"
                 startIcon={<SwipeRightIcon />}
                 disabled={loading3 || loading2 || loading || amount === null || loading3}
-                className='mp__margTop10'
+                className='demoBtn mp__margTop10'
               >
                 {loading ? 'Complete transfer in widget' : 'Transfer back'}
               </Button>
@@ -414,14 +366,14 @@ export default function WrapDemo(props) {
               <Button
                 onClick={cancelTransferRequest3}
                 variant="contained"
-                className={'mp__margTop10 marg-left-10 ' + (loading3 ? '' : 'hidden')}
+                className={'demoBtn mp__margTop10 marg-left-10 ' + (loading3 ? '' : 'hidden')}
                 startIcon={<CancelIcon />}
               >
                 Cancel
               </Button>
             </CardContent>
           </Card>
-        </Stack> */}
+        </Stack>
       </Stack>
     </Container>)
 }

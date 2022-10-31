@@ -32,21 +32,21 @@ export default function Router(props: any) {
             <Route path="erc20" >
                 <Route
                     path="s2s"
-                    element={<S2SDemo address={props.address} metaport={props.metaport} />}
+                    element={<S2SDemo address={props.address} metaport={props.metaport} setOpen={props.setOpen} />}
                 />
                 <Route
                     path="wrap"
-                    element={<WrapDemo address={props.address} metaport={props.metaport} />}
+                    element={<WrapDemo address={props.address} metaport={props.metaport} setOpen={props.setOpen} />}
                 />
             </Route>
             <Route path="nft" >
                 <Route
                     path="marketplace"
-                    element={<NFTMarketplace address={props.address} metaport={props.metaport} />}
+                    element={<NFTMarketplace address={props.address} metaport={props.metaport} setOpen={props.setOpen} />}
                 />
                 <Route
                     path="medals"
-                    element={<Medals address={props.address} metaport={props.metaport} />}
+                    element={<Medals address={props.address} metaport={props.metaport} setOpen={props.setOpen} />}
                 />
             </Route>
         </Routes>
