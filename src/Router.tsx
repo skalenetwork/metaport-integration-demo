@@ -9,7 +9,6 @@ import Header from './Header';
 import S2SDemo from './S2SDemo';
 import Sandbox from './Sandbox';
 import WrapDemo from './WrapDemo';
-import KnownIssues from './KnownIssues';
 import Medals from './Medals';
 
 
