@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import CancelIcon from '@mui/icons-material/Cancel';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 
 
 export default function Sandbox(props) {
@@ -17,6 +18,10 @@ export default function Sandbox(props) {
 
   function closeMetaport() {
     props.metaport.close();
+  }
+
+  function resetMetaport() {
+    props.metaport.reset();
   }
 
   return (<div>
@@ -49,6 +54,14 @@ export default function Sandbox(props) {
               className='mp__margTop10 marg-left-10 demoBtn'
             >
               Close Metaport
+            </Button>
+            <Button
+              onClick={resetMetaport}
+              variant="contained"
+              startIcon={<RotateLeftIcon />}
+              className='mp__margTop10 marg-left-10 demoBtn'
+            >
+              Reset Metaport
             </Button>
           </CardContent>
         </Card>

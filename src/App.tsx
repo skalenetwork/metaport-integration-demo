@@ -10,7 +10,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-import { Metaport, interfaces } from '@skalenetwork/metaport';
+import { Metaport, interfaces, dataclasses } from '@skalenetwork/metaport';
 import metaportConfig from './metaportConfig.json'
 
 import Header from './Header';
@@ -22,31 +22,40 @@ import { connect, addAccountChangedListener } from './Connector'
 interface MetaportThemesMap { [themeName: string]: interfaces.MetaportTheme; }
 
 
+const customPosition: dataclasses.Position = dataclasses.Positions.bottomRight;
+
+
 export const themes: MetaportThemesMap = {
   'default': {
     primary: '#d9e021',
     background: '#191919',
-    mode: 'dark'
+    mode: 'dark',
+    position: customPosition
   },
   'green': {
     primary: '#2dcb74',
     background: '#191919',
-    mode: 'dark'
+    mode: 'dark',
+    position: customPosition
   },
   'orange': {
     primary: '#f96300',
     background: '#ffffff',
-    mode: 'light'
+    mode: 'light',
+    position: customPosition
   },
   'violet': {
     primary: '#9a66ff',
     background: '#fbf8ff',
-    mode: 'light'
+    mode: 'light',
+    position: customPosition
   },
   'pink': {
     primary: '#e41c5d',
     background: '#ffffff',
-    mode: 'light'
+    mode: 'light',
+    position: { top: '100pt', bottom: 'auto', 'left': 'auto', right: '100pt' },
+    zIndex: 10
   }
 }
 
@@ -135,7 +144,7 @@ function App() {
         <SkDrawer />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Toolbar />
-          <Router address={address} metaport={metaport}  setOpen={setOpen}/>
+          <Router address={address} metaport={metaport} setOpen={setOpen} />
           <Snackbar
             open={open}
             autoHideDuration={8000}
