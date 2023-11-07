@@ -34,6 +34,8 @@ bun dev # or yarn dev
 
 5. Customize config in `src/metaportConfig.ts`
 
+You can check out mainnet config example in the [SKALE Portal repo](https://github.com/skalenetwork/portal/blob/main/config/mainnet.ts).
+
 ## Contributing
 
 We welcome contributions to the SKALE Metaport Widget Integration Demo! Please read through our contributing guidelines to learn about our submission process, coding standards, and more.
